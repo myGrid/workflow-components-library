@@ -29,6 +29,7 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
+    activo-rails (1.0)
     arel (2.0.6)
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
@@ -61,7 +62,7 @@ GEM
       term-ansicolor (~> 1.0.5)
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
-    culerity (0.2.13)
+    culerity (0.2.14)
     daemons (1.1.0)
     database_cleaner (0.6.0)
     devise (1.1.5)
@@ -191,6 +192,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activo-rails
   autotest
   autotest-rails
   bluecloth
