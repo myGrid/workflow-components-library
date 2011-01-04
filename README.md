@@ -1,2 +1,2 @@
-Wcl
-===========
+Taverna Workflow Components Library
+======================
