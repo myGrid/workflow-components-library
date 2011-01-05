@@ -6,7 +6,7 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 # Setup initial user so we can get in
-user = User.create! :name => "Admin", :email => "admin@example.org", :password => "admin", :password_confirmation => "admin"
+user = User.create! :name => "Admin", :email => "admin@example.org", :password => "password", :password_confirmation => "password"
 user.confirmed_at = user.confirmation_sent_at
 user.save
 Role.create! :name => 'Admin'
