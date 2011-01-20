@@ -1,0 +1,7 @@
+require 'array'
+require 'numeric'
+require 'string'
+require 'super_struct'
+require 'uuid_as_id'
+require 'addressable/uri'
+require 'has_submitter'

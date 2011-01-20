@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 gem "rails", "~> 3.0.0"
 gem "mysql2"
-gem "sqlite3-ruby", :require => "sqlite3"
+gem "sqlite3"
 gem "devise", "~> 1.1.3"
 gem "cancan"
 gem "hoptoad_notifier"
@@ -14,11 +14,19 @@ gem "yard"
 gem "bluecloth"
 gem "formtastic"
 #gem "activo-rails"
+gem "uuid"
+gem "versionomy"
+gem "validate_url"
+gem "addressable"
+gem "validates_existence", ">= 0.4"
+gem "simple_enum"
+gem "default_value_for"
 
 gem "rails3-generators", :group => :development
 gem "hpricot", :group => :development
 gem "ruby_parser", :group => :development
 gem "rspec-rails", "~> 2.0.0", :group => [:test, :development]
+gem "fuubar", :group => [:test, :development, :cucumber]
 gem "mocha", :group => [:test]
 gem "factory_girl_rails", :group => [:test, :cucumber]
 gem "faker", :group => [:test]

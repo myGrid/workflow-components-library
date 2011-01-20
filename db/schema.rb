@@ -10,7 +10,83 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110104010655) do
+ActiveRecord::Schema.define(:version => 20110120172146) do
+
+  create_table "components", :id => false, :force => true do |t|
+    t.string   "uuid",                :limit => 36, :null => false
+    t.string   "version",             :limit => 20, :null => false
+    t.string   "label",                             :null => false
+    t.string   "title",                             :null => false
+    t.text     "description"
+    t.integer  "publisher_id"
+    t.string   "publisher_type"
+    t.integer  "source_id"
+    t.integer  "submitter_id",                      :null => false
+    t.string   "submitter_type",                    :null => false
+    t.integer  "family_id"
+    t.integer  "taverna_activity_id",               :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "components", ["uuid"], :name => "index_components_on_uuid"
+
+  create_table "config_field_mappings", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "config_field_types", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "config_fields", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "example_values", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "external_resources", :force => true do |t|
+    t.string   "resource_id",   :null => false
+    t.string   "type",          :null => false
+    t.string   "title",         :null => false
+    t.text     "description"
+    t.string   "discovery_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "helpers", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "options", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "port_mappings", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ports", :force => true do |t|
+    t.integer  "component_id",                   :null => false
+    t.string   "usage_type",                     :null => false
+    t.string   "name",                           :null => false
+    t.string   "label",                          :null => false
+    t.text     "description"
+    t.integer  "depth"
+    t.boolean  "visible",      :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -34,6 +110,11 @@ ActiveRecord::Schema.define(:version => 20110104010655) do
 
   add_index "slugs", ["name", "sluggable_type", "sequence", "scope"], :name => "index_slugs_on_n_s_s_and_s", :unique => true
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
+
+  create_table "taverna_activities", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

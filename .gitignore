@@ -9,3 +9,4 @@ public/assets
 .idea/*
 .sass-cache/**/*
 *.swp
+.redcar
