@@ -5,7 +5,7 @@ class CreateComponents < ActiveRecord::Migration
       t.string :version, :limit => 20, :null => false
       t.string :label, :null => false
       t.string :title, :null => false
-      t.text :description
+      t.text :description, :limit => 100000
       t.references :publisher, :polymorphic => true
       t.references :source
       t.references :submitter, :polymorphic => true, :null => false

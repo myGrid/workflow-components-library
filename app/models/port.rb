@@ -6,20 +6,15 @@ class Port < ActiveRecord::Base
           [ :input, :output ], 
           :column => 'usage_type', 
           :upcase => true
-    
+  
+  validates_as_enum :usage_type
+  
+  include DatabaseValidation
+  
   validates :component,
             :existence => true
   
-  validates :usage_type,
-            :presence => true
-
   validates_as_enum :usage_type
-  
-  validates :name,
-            :presence => true
-  
-  validates :label,
-            :presence => true
   
   validates :depth,
             :numericality => { :greater_than_or_equal_to => 0 }

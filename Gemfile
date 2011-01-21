@@ -21,6 +21,8 @@ gem "addressable"
 gem "validates_existence", ">= 0.4"
 gem "simple_enum"
 gem "default_value_for"
+gem "database_validation", ">= 0.0.3"
+gem "sanitize"
 
 gem "rails3-generators", :group => :development
 gem "hpricot", :group => :development

@@ -1,15 +1,9 @@
 class ExternalResource < ActiveRecord::Base
   
-  validates :resource_id,
-            :presence => true,
-            :url => { :allow_blank => false }
+  include DatabaseValidation
   
-  validates :type,
-            :presence => true
-            
-  validates :title,
-            :presence => true,
-            :length => { :maximum => 255 }
+  validates :resource_id,
+            :url => { :allow_blank => false }
   
   validates :discovery_url,
             :url => { :allow_blank => true }

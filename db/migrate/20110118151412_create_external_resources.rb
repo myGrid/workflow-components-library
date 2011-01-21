@@ -4,7 +4,7 @@ class CreateExternalResources < ActiveRecord::Migration
       t.string :resource_id, :null => false
       t.string :type, :null => false
       t.string :title, :null => false
-      t.text :description
+      t.text :description, :limit => 100000
       t.string :discovery_url
       
       t.timestamps
