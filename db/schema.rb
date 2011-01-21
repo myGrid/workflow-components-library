@@ -134,6 +134,10 @@ ActiveRecord::Schema.define(:version => 20110121152141) do
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "taverna_activities", :force => true do |t|
+    t.string   "type_id",                           :null => false
+    t.string   "title",                             :null => false
+    t.text     "description",   :limit => 16777215
+    t.string   "discovery_url",                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
