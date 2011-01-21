@@ -7,6 +7,9 @@ require 'rails/all'
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Wcl
+  include VersionInfo
+  VERSION.file_name = File.expand_path("config/version_info.yml", ".")
+  
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers

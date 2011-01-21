@@ -23,6 +23,7 @@ gem "simple_enum"
 gem "default_value_for"
 gem "database_validation", ">= 0.0.3"
 gem "sanitize"
+gem "version_info"
 
 gem "rails3-generators", :group => :development
 gem "hpricot", :group => :development

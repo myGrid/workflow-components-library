@@ -5,3 +5,5 @@ require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
 Wcl::Application.load_tasks
+
+VersionInfo::Tasks.install(:class => Wcl)
