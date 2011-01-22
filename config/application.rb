@@ -8,6 +8,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Wcl
   include VersionInfo
+  VERSION.file_name = File.expand_path("version_info.yml", ".")
   
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
