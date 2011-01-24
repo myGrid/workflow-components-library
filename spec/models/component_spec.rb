@@ -15,7 +15,7 @@ describe Component do
   
   describe "#create_dna_to_rna_test_component" do
     it "creates a test Component 'DNA to RNA' and ensures that the to_hash method builds the right object" do
-      
+      pending "Still TODO"
     end
   end
   
