@@ -35,6 +35,7 @@ GEM
       ZenTest (>= 4.4.1)
     autotest-rails (4.1.0)
       ZenTest
+    awesome_print (0.3.1)
     babosa (0.2.1)
     bcrypt-ruby (2.1.4)
     blockenspiel (0.4.1)
@@ -213,6 +214,7 @@ GEM
     warden (1.0.3)
       rack (>= 1.0.0)
     will_paginate (3.0.pre2)
+    wirble (0.1.3)
     xpath (0.1.3)
       nokogiri (~> 1.3)
     yard (0.6.4)
@@ -225,6 +227,7 @@ DEPENDENCIES
   addressable
   autotest
   autotest-rails
+  awesome_print
   bluecloth
   cancan
   capybara (~> 0.4.0)
@@ -265,4 +268,5 @@ DEPENDENCIES
   version_info
   versionomy
   will_paginate (~> 3.0.pre2)
+  wirble
   yard
