@@ -46,4 +46,4 @@ gem "launchy", :group => [:cucumber]
 gem "timecop", :group => [:test, :cucumber]
 gem "pickle", :group => [:test, :cucumber]
 gem "evergreen", :require => "evergreen/rails", :group => [:test, :development]
-gem "mongrel", '>= 1.2.0.pre2', :group => :development
+gem "mongrel", '>= 1.2.0.pre2', :group => [:test, :development]
