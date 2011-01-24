@@ -27,6 +27,7 @@ gem "version_info"
 gem "wirble"
 gem "awesome_print"
 
+gem "annotate", :group => :development
 gem "rails3-generators", :group => :development
 gem "hpricot", :group => :development
 gem "ruby_parser", :group => :development
