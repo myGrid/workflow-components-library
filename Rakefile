@@ -6,4 +6,4 @@ require 'rake'
 
 Wcl::Application.load_tasks
 
-VersionInfo::Tasks.install(:class => Wcl)
+VersionInfo::RakeTasks.install(:class => Wcl)
