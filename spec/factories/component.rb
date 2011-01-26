@@ -5,3 +5,4 @@ Factory.define :component do |c|
   c.association :taverna_activity
 end
 
+

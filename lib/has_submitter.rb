@@ -26,7 +26,7 @@ module ActiveRecord
     end
     
     module InstanceMethods
-      def submitter_label
+      def submitter_name
         %w{ preferred_name display_name title name }.each do |w|
           return eval("submitter.#{w}") if submitter.respond_to?(w)
         end

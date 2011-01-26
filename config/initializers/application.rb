@@ -5,3 +5,8 @@ require 'super_struct'
 require 'uuid_as_id'
 require 'addressable/uri'
 require 'has_submitter'
+
+# FIXME: move this to a configuration file
+module AppConfig
+  BASE_URL = "http://localhost:3000/" 
+end

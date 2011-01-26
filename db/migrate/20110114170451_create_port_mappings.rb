@@ -2,7 +2,7 @@ class CreatePortMappings < ActiveRecord::Migration
   def self.up
     create_table :port_mappings do |t|
       t.boolean :to_processor_port
-      t.string :processor_port_id
+      t.string :processor_port_ref
       
       t.timestamps
     end

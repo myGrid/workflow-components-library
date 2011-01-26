@@ -1,6 +1,7 @@
 class CreateConfigFields < ActiveRecord::Migration
   def self.up
     create_table :config_fields do |t|
+      t.belongs_to :component, :null => false
       t.string :name, :null => false
       t.string :label, :null => false
       t.text :description, :limit => 100000

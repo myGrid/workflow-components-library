@@ -22,3 +22,16 @@ end
 Factory.define :role do |role| 
   role.sequence(:name) { |n| "Quick #{n}".camelize }
 end
+
+
+Factory.define :paul, :class => User do |u|
+  u.id 2
+  u.name 'Paul Johnson'
+  u.email 'paul@example.org'
+  u.password "password" 
+  u.confirmed_at Time.new.to_s
+  u.confirmation_sent_at Time.new.to_s
+  u.password_confirmation { |u| u.password }
+  u.roles { [ Factory(:role, :name => 'Member') ] }
+  u.homepage "http://www.example.org/paul_johnson"
+end

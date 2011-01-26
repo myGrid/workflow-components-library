@@ -29,7 +29,7 @@ module ActiveRecord
       private
       
       def set_uuid
-        self.id = UUID.new.generate
+        self.id = UUID.new.generate if self.id.blank?
       end
     end
   end

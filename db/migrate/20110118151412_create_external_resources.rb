@@ -1,7 +1,7 @@
 class CreateExternalResources < ActiveRecord::Migration
   def self.up
     create_table :external_resources do |t|
-      t.string :resource_id, :null => false
+      t.string :resource, :null => false
       t.string :type, :null => false
       t.string :title, :null => false
       t.text :description, :limit => 100000

@@ -7,14 +7,11 @@
 #  version             :string(20)      not null
 #  label               :string(255)     not null
 #  title               :string(255)     not null
-#  description         :text(16777215)
-#  publisher_id        :integer(4)
-#  publisher_type      :string(255)
-#  source_id           :integer(4)
+#  taverna_activity_id :integer(4)      not null
 #  submitter_id        :integer(4)      not null
 #  submitter_type      :string(255)     not null
+#  description         :text(16777215)
 #  family_id           :integer(4)
-#  taverna_activity_id :integer(4)      not null
 #  created_at          :datetime
 #  updated_at          :datetime
 #
@@ -39,8 +36,11 @@ describe Component do
   end
   
   describe "#create_dna_to_rna_test_component" do
-    it "creates a test Component 'DNA to RNA' and ensures that the to_hash method builds the right object" do
-      pending "Still TODO"
+    it "creates a test Component 'DNA to RNA' and checks that the to_hash method builds the right object" do
+      component = Factory.build(:dna_to_rna)
+      component.save!
+      
+      component.to_hash.should == Test::Data::Components::DNA_TO_RNA 
     end
   end
   

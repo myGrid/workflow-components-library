@@ -4,6 +4,7 @@
 # Table name: config_fields
 #
 #  id                     :integer(4)      not null, primary key
+#  component_id           :integer(4)      not null
 #  name                   :string(255)     not null
 #  label                  :string(255)     not null
 #  description            :text(16777215)

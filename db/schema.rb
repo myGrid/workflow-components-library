@@ -10,21 +10,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110121152141) do
+ActiveRecord::Schema.define(:version => 20110126113319) do
 
   create_table "components", :id => false, :force => true do |t|
     t.string   "uuid",                :limit => 36,       :null => false
     t.string   "version",             :limit => 20,       :null => false
     t.string   "label",                                   :null => false
     t.string   "title",                                   :null => false
-    t.text     "description",         :limit => 16777215
-    t.integer  "publisher_id"
-    t.string   "publisher_type"
-    t.integer  "source_id"
+    t.integer  "taverna_activity_id",                     :null => false
     t.integer  "submitter_id",                            :null => false
     t.string   "submitter_type",                          :null => false
+    t.text     "description",         :limit => 16777215
     t.integer  "family_id"
-    t.integer  "taverna_activity_id",                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -33,21 +30,25 @@ ActiveRecord::Schema.define(:version => 20110121152141) do
 
   create_table "config_field_mappings", :force => true do |t|
     t.boolean  "to_activity_config_property"
-    t.string   "activity_config_property_id"
+    t.string   "activity_config_property_ref"
     t.boolean  "to_component_port"
     t.integer  "component_port_id_id"
     t.boolean  "to_processor_port"
-    t.string   "processor_port_id"
+    t.string   "processor_port_ref"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "config_field_options", :force => true do |t|
+    t.string   "label",           :null => false
+    t.string   "value",           :null => false
+    t.integer  "config_field_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "config_fields", :force => true do |t|
+    t.integer  "component_id",                                                  :null => false
     t.string   "name",                                                          :null => false
     t.string   "label",                                                         :null => false
     t.text     "description",            :limit => 16777215
@@ -74,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20110121152141) do
   end
 
   create_table "external_resources", :force => true do |t|
-    t.string   "resource_id",                       :null => false
+    t.string   "resource",                          :null => false
     t.string   "type",                              :null => false
     t.string   "title",                             :null => false
     t.text     "description",   :limit => 16777215
@@ -93,7 +94,7 @@ ActiveRecord::Schema.define(:version => 20110121152141) do
 
   create_table "port_mappings", :force => true do |t|
     t.boolean  "to_processor_port"
-    t.string   "processor_port_id"
+    t.string   "processor_port_ref"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -134,7 +135,7 @@ ActiveRecord::Schema.define(:version => 20110121152141) do
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "taverna_activities", :force => true do |t|
-    t.string   "type_id",                           :null => false
+    t.string   "type",                              :null => false
     t.string   "title",                             :null => false
     t.text     "description",   :limit => 16777215
     t.string   "discovery_url",                     :null => false
@@ -163,6 +164,7 @@ ActiveRecord::Schema.define(:version => 20110121152141) do
     t.string   "name"
     t.string   "cached_slug"
     t.datetime "deleted_at"
+    t.string   "homepage"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
