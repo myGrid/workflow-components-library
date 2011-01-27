@@ -199,7 +199,7 @@ class Component < ActiveRecord::Base
         "options" => [ ],   # FIXME: stubbed
         "additional_constraints" => field.additional_constraints,
         "examples" => [ ],    # FIXME: stubbed
-        "mapping" => {    # FIXME: stubbed
+        "mapping" => {
           "to_activity_configuration_property" => field.mapping.to_activity_config_property,
           "activity_configuration_property" => {
             "name" => field.mapping.activity_config_property_ref
