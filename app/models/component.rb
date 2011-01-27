@@ -38,8 +38,22 @@ class Component < ActiveRecord::Base
 
   belongs_to :taverna_activity
   
+  has_many :input_ports,
+           :class_name => "Port",
+           :conditions => { :usage_type_cd => Port.usage_types.input },
+           :dependent => :destroy
+  
+  has_many :output_ports,
+           :class_name => "Port",
+           :conditions => { :usage_type_cd => Port.usage_types.output },
+           :dependent => :destroy
+  
+  has_many :config_fields,
+           :dependent => :destroy
+  
+  # FIXME: change all keys to symbols (for a slight perf improvement)
   def to_hash
-    output = { 
+    result = { 
       'id' => Wcl::Api.uri_for_object(self),
       'version' => self.version,
       'label' => self.label,
@@ -83,42 +97,14 @@ class Component < ActiveRecord::Base
       ],
       "related" => [ ],   # FIXME: stubbed
       "ports" => {
-        "inputs" => [
-          {
-            "relative_id" => "ports/inputs/dna_seq",
-            "name" => "dna_seq",
-            "label" => "DNA Sequence",
-            "depth" => 0,
-            "description" => "The DNA sequence you want to convert",
-            "visible" => true,
-            "data_types" => [
-              "http://www.mygrid.org.uk/ontology#DNA_sequence"
-            ],
-            "examples" => [
-              {
-                "data_type" => "http://www.mygrid.org.uk/ontology#DNA_sequence",
-                "value" => "CGGTA"
-              }
-            ],
-            "tags" => [
-              "DNA",
-              "Sequence"
-            ],
-            "mapping" => {
-              "to_processor_port" => true,
-              "processor_port" => {
-                "name" => "dna_seq"
-              }
-            }
-          }
-        ],
+        "inputs" => to_hash_for_ports(self.input_ports, :input),
         "outputs" => [
           {
             "relative_id" => "ports/outputs/rna_seq",
             "name" => "rna_seq",
             "label" => "RNA Sequence",
-            "depth" => 0,
             "description" => "The resulting RNA sequence",
+            "depth" => 0,
             "visible" => true,
             "data_types" => [
               "http://www.mygrid.org.uk/ontology#RNA_structure"
@@ -135,47 +121,103 @@ class Component < ActiveRecord::Base
               }
             }
           }
-        ],
-        "dynamic_providers" => [ ]
+        ]
       },
       "configuration" => {
-        "fields" => [
-          {
-            "relative_id" => "configuration/fields/script",
-            "name" => "script",
-            "label" => "script",
-            "field_type" => "TEXT",
-            "data_type" => "String",
-            "description" => "The script to run",
-            "config_group" => "",
-            "required" => true,
-            "default_value" => "﻿import org.biojava.bio.seq.DNATools;\nimport org.biojava.bio.seq.RNATools;\nimport org.biojava.bio.symbol.SymbolList;\n\n// make a DNA SymbolList\nSymbolList symL = DNATools.createDNA(dna_seq);\n\n// transcribe it to RNA (after BioJava 1.4 this method is\n// deprecated)\nsymL = RNATools.transcribe(symL);\n\n// (after BioJava 1.4 use this method instead)\n// symL = DNATools.toRNA(symL);\n\n// just to prove it worked\nrna_seq = symL.seqString();",
-            "fixed" => true,
-            "hidden" => true,
-            "multiple" => false,
-            "constrained_to_options" => false,
-            "options" => [ ],
-            "additional_constraints" => "",
-            "examples" => [ ],
-            "mapping" => {
-              "to_activity_configuration_property" => true,
-              "activity_configuration_property" => {
-                "name" => "script"
-              },
-              "to_component_port" => false,
-              "component_port" => { },
-              "to_processor_port" => false,
-              "processor_port" => { }
-            },
-            "make_input_port" => false
-          }
-        ],
-        "dynamic_providers" => [ ]
+        "fields" => to_hash_for_config_fields(self.config_fields)
       },
-      "helpers" => [ ]
+      "helpers" => [ ]   # FIXME: stubbed
     }
     
-    return output
+    return result
   end
-
+  
+  protected
+  
+  def to_hash_for_ports(ports, usage_type)
+    result = [ ]
+    
+    ports.each do |port|
+      result << {
+        "relative_id" => "ports/#{usage_type.to_s.pluralize}/#{port.name}",
+        "name" => port.name,
+        "label" => port.label,
+        "description" => port.description,
+        "depth" => port.depth,
+        "visible" => port.visible,
+        "data_types" => [   # FIXME: stubbed
+          "http://www.mygrid.org.uk/ontology#DNA_sequence"
+        ],
+        "examples" => to_hash_for_example_values(port.example_values),
+        "tags" => [   # FIXME: stubbed
+          "DNA",
+          "Sequence"
+        ],
+        "mapping" => {
+          "to_processor_port" => port.mapping.to_processor_port,
+          "processor_port" => {
+            "name" => port.mapping.processor_port_ref
+          }
+        }
+      }
+    end
+    
+    return result
+  end
+  
+  def to_hash_for_example_values(example_values)
+    result = [ ]
+    
+    example_values.each do |example|
+      result << {
+        "data_type" => example.data_type,
+        "value" => example.value        
+      }
+    end
+    
+    return result
+  end
+  
+  def to_hash_for_config_fields(config_fields)
+    result = [ ]
+    
+    config_fields.each do |field|
+      result << {
+        "relative_id" => "configuration/fields/#{field.name}",
+        "name" => field.name,
+        "label" => field.label,
+        "field_type" => field.field_type.to_s.upcase,
+        "data_type" => field.data_type,
+        "description" => field.description,
+        "config_group" => field.config_group,
+        "required" => field.required,
+        "default_value" => field.default_value,
+        "fixed" => field.fixed,
+        "hidden" => field.hidden,
+        "multiple" => field.multiple,
+        "constrained_to_options" => field.constrained_to_options,
+        "options" => [ ],   # FIXME: stubbed
+        "additional_constraints" => field.additional_constraints,
+        "examples" => [ ],    # FIXME: stubbed
+        "mapping" => {    # FIXME: stubbed
+          "to_activity_configuration_property" => field.mapping.to_activity_config_property,
+          "activity_configuration_property" => {
+            "name" => field.mapping.activity_config_property_ref
+          },
+          "to_component_port" => field.mapping.to_component_port,
+          "component_port" => { 
+            "resource" => nil   # FIXME: stubbed
+          },
+          "to_processor_port" => field.mapping.to_processor_port,
+          "processor_port" => {
+            "name" => field.mapping.processor_port_ref
+          }
+        },
+        "make_input_port" => field.make_input_port
+      }
+    end
+    
+    return result
+  end
+  
 end

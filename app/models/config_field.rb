@@ -1,14 +1,14 @@
 # == Schema Information
-# Schema version: 20110121152141
+# Schema version: 20110114170623
 #
 # Table name: config_fields
 #
 #  id                     :integer(4)      not null, primary key
-#  component_id           :integer(4)      not null
+#  component_id           :string(36)      not null
 #  name                   :string(255)     not null
 #  label                  :string(255)     not null
 #  description            :text(16777215)
-#  field_type             :integer(1)      not null
+#  field_type_cd          :integer(1)      not null
 #  data_type              :string(255)     not null
 #  config_group           :string(255)
 #  required               :boolean(1)      default(TRUE)
@@ -22,6 +22,10 @@
 #  created_at             :datetime
 #  updated_at             :datetime
 #
+# Indexes
+#
+#  index_config_fields_on_component_id  (component_id)
+#
 
 class ConfigField < ActiveRecord::Base
   
@@ -34,15 +38,22 @@ class ConfigField < ActiveRecord::Base
             :combo => 3, 
             :check => 4, 
             :radio => 5,
-            :complex => 6 }, 
-          :column => 'field_type', 
+            :complex => 6 },
           :upcase => true
   
   validates_as_enum :field_type
 
   include DatabaseValidation
   
+  validates :component,
+            :existence => true
+  
   validates :data_type,
             :url => { :allow_blank => false }
-
+  
+  belongs_to :component
+  
+  has_one :mapping,
+          :class_name => 'ConfigFieldMapping'
+  
 end

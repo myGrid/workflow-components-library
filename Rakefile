@@ -6,4 +6,7 @@ require 'rake'
 
 Wcl::Application.load_tasks
 
+require 'single_test' 
+SingleTest.load_tasks
+
 VersionInfo::RakeTasks.install(:class => Wcl)

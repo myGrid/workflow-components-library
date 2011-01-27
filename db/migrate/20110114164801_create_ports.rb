@@ -1,8 +1,8 @@
 class CreatePorts < ActiveRecord::Migration
   def self.up
     create_table :ports do |t|
-      t.belongs_to :component, :null => false
-      t.integer :usage_type, :null => false, :limit => 1
+      t.string :component_id, :limit  => 36, :null => false
+      t.integer :usage_type_cd, :null => false, :limit => 1
       t.string :name, :null => false
       t.string :label, :null => false
       t.text :description, :limit => 100000
@@ -11,6 +11,8 @@ class CreatePorts < ActiveRecord::Migration
       
       t.timestamps
     end
+    add_index(:ports, :component_id)
+    add_index(:ports, [ :component_id, :usage_type_cd ])
   end
 
   def self.down

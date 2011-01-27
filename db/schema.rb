@@ -29,30 +29,35 @@ ActiveRecord::Schema.define(:version => 20110126113319) do
   add_index "components", ["uuid"], :name => "index_components_on_uuid"
 
   create_table "config_field_mappings", :force => true do |t|
-    t.boolean  "to_activity_config_property"
+    t.integer  "config_field_id",              :null => false
+    t.boolean  "to_activity_config_property",  :null => false
     t.string   "activity_config_property_ref"
-    t.boolean  "to_component_port"
-    t.integer  "component_port_id_id"
-    t.boolean  "to_processor_port"
+    t.boolean  "to_component_port",            :null => false
+    t.integer  "component_port_id"
+    t.boolean  "to_processor_port",            :null => false
     t.string   "processor_port_ref"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "config_field_mappings", ["config_field_id"], :name => "index_config_field_mappings_on_config_field_id"
+
   create_table "config_field_options", :force => true do |t|
+    t.integer  "config_field_id", :null => false
     t.string   "label",           :null => false
     t.string   "value",           :null => false
-    t.integer  "config_field_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "config_field_options", ["config_field_id"], :name => "index_config_field_options_on_config_field_id"
+
   create_table "config_fields", :force => true do |t|
-    t.integer  "component_id",                                                  :null => false
+    t.string   "component_id",           :limit => 36,                          :null => false
     t.string   "name",                                                          :null => false
     t.string   "label",                                                         :null => false
     t.text     "description",            :limit => 16777215
-    t.integer  "field_type",             :limit => 1,                           :null => false
+    t.integer  "field_type_cd",          :limit => 1,                           :null => false
     t.string   "data_type",                                                     :null => false
     t.string   "config_group"
     t.boolean  "required",                                   :default => true
@@ -67,12 +72,17 @@ ActiveRecord::Schema.define(:version => 20110126113319) do
     t.datetime "updated_at"
   end
 
+  add_index "config_fields", ["component_id"], :name => "index_config_fields_on_component_id"
+
   create_table "example_values", :force => true do |t|
+    t.integer  "port_id",    :null => false
     t.string   "data_type",  :null => false
     t.text     "value",      :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "example_values", ["port_id"], :name => "index_example_values_on_port_id"
 
   create_table "external_resources", :force => true do |t|
     t.string   "resource",                          :null => false
@@ -85,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20110126113319) do
   end
 
   create_table "helpers", :force => true do |t|
+    t.integer  "port_id",                         :null => false
     t.string   "label",                           :null => false
     t.string   "title",                           :null => false
     t.text     "description", :limit => 16777215
@@ -92,24 +103,32 @@ ActiveRecord::Schema.define(:version => 20110126113319) do
     t.datetime "updated_at"
   end
 
+  add_index "helpers", ["port_id"], :name => "index_helpers_on_port_id"
+
   create_table "port_mappings", :force => true do |t|
-    t.boolean  "to_processor_port"
+    t.integer  "port_id",            :null => false
+    t.boolean  "to_processor_port",  :null => false
     t.string   "processor_port_ref"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "port_mappings", ["port_id"], :name => "index_port_mappings_on_port_id"
+
   create_table "ports", :force => true do |t|
-    t.integer  "component_id",                                       :null => false
-    t.integer  "usage_type",   :limit => 1,                          :null => false
-    t.string   "name",                                               :null => false
-    t.string   "label",                                              :null => false
-    t.text     "description",  :limit => 16777215
+    t.string   "component_id",  :limit => 36,                         :null => false
+    t.integer  "usage_type_cd", :limit => 1,                          :null => false
+    t.string   "name",                                                :null => false
+    t.string   "label",                                               :null => false
+    t.text     "description",   :limit => 16777215
     t.integer  "depth"
-    t.boolean  "visible",                          :default => true
+    t.boolean  "visible",                           :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "ports", ["component_id", "usage_type_cd"], :name => "index_ports_on_component_id_and_usage_type_cd"
+  add_index "ports", ["component_id"], :name => "index_ports_on_component_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"

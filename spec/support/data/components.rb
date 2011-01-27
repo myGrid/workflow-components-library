@@ -5,6 +5,8 @@ module Test
   module Data
     module Components
       
+      # FIXME: change all keys to symbols (for a slight perf improvement)
+      
       DNA_TO_RNA = { 
         "id" => "http://localhost:3000/components/2f90b0d0-e03e-11df-85ca-0800200c9a66",
         "version" => "1.0.0",
@@ -57,8 +59,8 @@ module Test
               "relative_id" => "ports/inputs/dna_seq",
               "name" => "dna_seq",
               "label" => "DNA Sequence",
-              "depth" => 0,
               "description" => "The DNA sequence you want to convert",
+              "depth" => 0,
               "visible" => true,
               "data_types" => [
                 "http://www.mygrid.org.uk/ontology#DNA_sequence"
@@ -86,8 +88,8 @@ module Test
               "relative_id" => "ports/outputs/rna_seq",
               "name" => "rna_seq",
               "label" => "RNA Sequence",
-              "depth" => 0,
               "description" => "The resulting RNA sequence",
+              "depth" => 0,
               "visible" => true,
               "data_types" => [
                 "http://www.mygrid.org.uk/ontology#RNA_structure"
@@ -104,8 +106,7 @@ module Test
                 }
               }
             }
-          ],
-          "dynamic_providers" => [ ]
+          ]
         },
         "configuration" => {
           "fields" => [
@@ -114,9 +115,9 @@ module Test
               "name" => "script",
               "label" => "script",
               "field_type" => "TEXT",
-              "data_type" => "String",
+              "data_type" => "http://www.w3.org/2001/XMLSchema#string",
               "description" => "The script to run",
-              "config_group" => "",
+              "config_group" => nil,
               "required" => true,
               "default_value" => "﻿import org.biojava.bio.seq.DNATools;\nimport org.biojava.bio.seq.RNATools;\nimport org.biojava.bio.symbol.SymbolList;\n\n// make a DNA SymbolList\nSymbolList symL = DNATools.createDNA(dna_seq);\n\n// transcribe it to RNA (after BioJava 1.4 this method is\n// deprecated)\nsymL = RNATools.transcribe(symL);\n\n// (after BioJava 1.4 use this method instead)\n// symL = DNATools.toRNA(symL);\n\n// just to prove it worked\nrna_seq = symL.seqString();",
               "fixed" => true,
@@ -124,7 +125,7 @@ module Test
               "multiple" => false,
               "constrained_to_options" => false,
               "options" => [ ],
-              "additional_constraints" => "",
+              "additional_constraints" => nil,
               "examples" => [ ],
               "mapping" => {
                 "to_activity_configuration_property" => true,
@@ -132,14 +133,17 @@ module Test
                   "name" => "script"
                 },
                 "to_component_port" => false,
-                "component_port" => { },
+                "component_port" => { 
+                  "resource" => nil
+                },
                 "to_processor_port" => false,
-                "processor_port" => { }
+                "processor_port" => { 
+                  "name" => nil
+                }
               },
               "make_input_port" => false
             }
-          ],
-          "dynamic_providers" => [ ]
+          ]
         },
         "helpers" => [ ]
       }.freeze      

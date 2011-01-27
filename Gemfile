@@ -21,7 +21,7 @@ gem "addressable"
 gem "validates_existence", ">= 0.4"
 gem "simple_enum"
 gem "default_value_for"
-gem "database_validation", ">= 0.0.3"
+gem "database_validation", ">= 0.0.4"
 gem "sanitize"
 gem "version_info"
 gem "wirble"
@@ -33,6 +33,7 @@ gem "rails3-generators", :group => :development
 gem "hpricot", :group => :development
 gem "ruby_parser", :group => :development
 gem "rspec-rails", "~> 2.0.0", :group => [:test, :development]
+gem "single_test", :group => [:test, :development]
 gem "fuubar", :group => [:test, :development, :cucumber]
 gem "mocha", :group => [:test]
 gem "factory_girl_rails", :group => [:test, :cucumber]

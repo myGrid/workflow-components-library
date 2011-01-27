@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110121152141
+# Schema version: 20110126113319
 #
 # Table name: users
 #
@@ -24,6 +24,7 @@
 #  name                 :string(255)
 #  cached_slug          :string(255)
 #  deleted_at           :datetime
+#  homepage             :string(255)
 #
 # Indexes
 #
