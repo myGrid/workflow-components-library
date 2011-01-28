@@ -13,7 +13,7 @@ module Wcl
       uri = ""
       
       unless path.blank?
-        uri = URI.join(AppConfig::BASE_URL, path).to_s
+        uri = URI.join(Settings.base_url, path).to_s
         uri = append_params(uri, options[:params]) unless options[:params].blank?
       end
       
@@ -28,7 +28,7 @@ module Wcl
       uri = ""
       
       unless resource_name.blank?
-        uri = URI.join(AppConfig::BASE_URL, resource_name).to_s
+        uri = URI.join(Settings.base_url, resource_name).to_s
         uri = append_params(uri, options[:params]) unless options[:params].blank?
       end
       
@@ -50,7 +50,7 @@ module Wcl
           sub_path = "/#{sub_path}" unless sub_path.starts_with?('/')
           resource_part += sub_path
         end
-        uri = URI.join(AppConfig::BASE_URL, resource_part).to_s
+        uri = URI.join(Settings.base_url, resource_part).to_s
         uri = append_params(uri, options[:params]) unless options[:params].blank?
       end
       
@@ -61,12 +61,12 @@ module Wcl
     # Returns nil if the URI is an invalid resource URI, or if the object doesn't exist anymore.
     def self.object_for_uri(uri)
       return nil if uri.blank?
-      return nil unless uri.downcase.include?(AppConfig::BASE_URL.downcase)
+      return nil unless uri.downcase.include?(Settings.base_url.downcase)
       
       obj = nil
       
       begin
-        pieces = uri.downcase.gsub(AppConfig::BASE_URL.downcase, '').split('/').delete_if { |s| s.blank? }
+        pieces = uri.downcase.gsub(Settings.base_url.downcase, '').split('/').delete_if { |s| s.blank? }
         obj = pieces[0].singularize.camelize.constantize.find(pieces[1])
       rescue Exception => ex
         Wcl::Util.log_exception(ex, :warning, "Wcl::Api.object_for_uri failed to find an object for the uri '#{uri}'")

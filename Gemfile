@@ -26,6 +26,7 @@ gem "version_info"
 gem "wirble"
 gem "awesome_print"
 gem "flutie", "~> 1.1"
+gem "rails_config"
 
 gem "annotate", :group => :development
 gem "railroady", :group => [:test, :development]
