@@ -27,11 +27,30 @@ describe Component do
   describe "#create_and_find_empty_one" do
     it "creates then finds an 'empty' Component (to test simple creation of Component and UUID as primary key)" do
       component = Factory.build(:component)
-      component.save!
+      
+      expect { component.save! }.to_not raise_error
       
       component_again = Component.find(component.id)
       
       component_again.should == component
+    end
+  end
+  
+  describe "#create_and_update_version" do 
+    it "creates a Component, then updates the 'version' field in the appropriate way(s)" do
+      component = Factory(:component)
+      
+      component.version.should == "0.0.0"
+      
+      component.version_bump(:major)
+      expect { component.save! }.to_not raise_error
+      component.version.should == "1.0.0"
+      
+      expect { component.version = "2.0.0" }.to raise_error
+      
+      component.version_bump(:minor)
+      expect { component.save! }.to_not raise_error
+      component.version.should == "1.1.0"
     end
   end
   

@@ -14,6 +14,16 @@ module ActiveRecord
                   :presence => true,
                   :length => { :maximum => 36 }
         
+        # This allows the 'uuid' attribute to only be set if it is a new record.
+        # Otherwise an error is raised.
+        define_method "uuid=" do |new_uuid|
+          if new_record?
+            write_attribute(:uuid, new_uuid)
+          else
+            raise "Cannot directly set the 'uuid' field for the #{self.class.name} model"
+          end
+        end
+        
         class_eval do
           extend ActiveRecord::UUIDAsID::SingletonMethods
         end
