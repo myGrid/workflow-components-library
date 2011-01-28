@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110121152141
+# Schema version: 20110126113319
 #
 # Table name: components
 #

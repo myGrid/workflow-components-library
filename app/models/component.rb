@@ -1,8 +1,5 @@
-# encoding: utf-8
-# -*- coding: utf-8 -*-
-
 # == Schema Information
-# Schema version: 20110121152141
+# Schema version: 20110126113319
 #
 # Table name: components
 #
@@ -23,18 +20,23 @@
 #  index_components_on_uuid  (uuid)
 #
 
+# encoding: utf-8
+# -*- coding: utf-8 -*-
+
 class Component < ActiveRecord::Base
   
   uuid_as_id
   
   has_submitter
   
-  default_value_for :version, "0.0.1"
+  default_value_for :version, "0.0.0"
   
   include DatabaseValidation
   
   validates :taverna_activity,
             :existence => true
+            
+  has_version_field
 
   belongs_to :taverna_activity
   
