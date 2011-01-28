@@ -1,4 +1,5 @@
-@import "partials/main_variables";
+@import "flutie";
+@import "partials/variables";
 @import "partials/fonts";
 @import "partials/defaults";
 @import "partials/media";
@@ -9,3 +10,28 @@
   @include media;
 }
 @include main;
+
+html {
+  background-color: $layout-background;
+}
+
+body { 
+  background-color: $layout-background;
+  margin: 0;
+}
+
+#container {
+  margin: $layout-margin;
+  width: $layout-width;
+}
+
+#content {
+  background: #fff;
+  margin: $layout-margin;
+  width: $layout-width;
+  padding: 30px;
+  border-radius: 20px;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+}
+

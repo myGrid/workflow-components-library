@@ -1,5 +1,5 @@
 source 'http://rubygems.org'
-gem "rails", "~> 3.0.0"
+gem "rails", "3.0.3"
 gem "mysql2"
 gem "sqlite3"
 gem "devise", "~> 1.1.3"
@@ -13,7 +13,6 @@ gem "haml-rails"
 gem "yard"
 gem "bluecloth"
 gem "formtastic"
-#gem "activo-rails"
 gem "uuid"
 gem "versionomy"
 gem "validate_url"
@@ -26,6 +25,7 @@ gem "sanitize"
 gem "version_info"
 gem "wirble"
 gem "awesome_print"
+gem "flutie", "~> 1.1"
 
 gem "annotate", :group => :development
 gem "railroady", :group => [:test, :development]
@@ -50,3 +50,4 @@ gem "timecop", :group => [:test, :cucumber]
 gem "pickle", :group => [:test, :cucumber]
 gem "evergreen", :require => "evergreen/rails", :group => [:test, :development]
 gem "mongrel", '>= 1.2.0.pre2', :group => [:test, :development]
+gem "rb-inotify", ">= 0.5.1", :group => [:test, :development]
