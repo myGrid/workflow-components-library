@@ -1,0 +1,24 @@
+@mixin inline-block {
+  display: -moz-inline-block;
+  display: -moz-inline-box;
+  display: inline-block;
+}
+
+@mixin rounded($size) {
+  border-radius: $size;
+  -moz-border-radius: $size;
+  -webkit-border-radius: $size;
+}
+
+@mixin shadowed($size) {
+  -moz-box-shadow: $size $size 2px #CCC;
+  -webkit-box-shadow: $size $size 2px #CCC;
+  box-shadow: $size $size 2px #CCC;
+}
+
+@mixin opacified($amount) {
+  filter:alpha(opacity=$amount*100);
+  -moz-opacity: $amount;
+  -khtml-opacity: $amount;
+  opacity: $amount;
+}

@@ -23,9 +23,17 @@
     = include_stylesheets :main, :media => 'all'
     = yield(:head)
   %body
-    #container
-      = render :partial => "shared/header"
-      %section#content
-        = yield
-    = render :partial => "shared/footer"
-    = render :partial => "shared/end_scripts"
+    #doc4.yui-t5
+      #hd
+        = render :partial => "shared/header"
+      #bd
+        #yui-main
+          %section#content
+            = render :partial => "shared/messages"
+            = yield
+        #sidebar.yui-b
+          %div.inner
+            &nbsp;
+      #ft
+        = render :partial => "shared/footer"
+        = render :partial => "shared/end_scripts"
