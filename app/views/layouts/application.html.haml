@@ -28,9 +28,10 @@
         = render :partial => "shared/header"
       #bd
         #yui-main
-          %section#content
-            = render :partial => "shared/messages"
-            = yield
+          %section
+            #content.yui-b
+              = render :partial => "shared/messages"
+              = yield
         #sidebar.yui-b
           %div.inner
             &nbsp;

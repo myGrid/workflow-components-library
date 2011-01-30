@@ -112,9 +112,7 @@ body {
   color: #333;
   font-size: 85%;
   background-color: #F5F5F5;
-  border-radius: 3px;
-  -moz-border-radius: 3px;
-  -webkit-border-radius: 3px;
+  @include rounded(3px);
   padding: 5px 6px;
 }
 
@@ -181,16 +179,13 @@ body {
   background: #fff;
   padding: 1.2em;
   margin: 0;
-  border-radius: 15px;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
+  @include rounded(12px);
 }
 
 #sidebar {
   background-color: #F5F5F5;
-  min-height: 500px;
-  margin: 10px;
   border: 1px solid #DDD;
+  min-height: 500px;
   @include rounded(8px);
   @include shadowed(2px);
   @include opacified(0.90);

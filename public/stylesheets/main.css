@@ -854,15 +854,14 @@ body {
   background: #fff;
   padding: 1.2em;
   margin: 0;
-  border-radius: 15px;
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px; }
+  border-radius: 12px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px; }
 
 #sidebar {
   background-color: #F5F5F5;
-  min-height: 500px;
-  margin: 10px;
   border: 1px solid #DDD;
+  min-height: 500px;
   border-radius: 8px;
   -moz-border-radius: 8px;
   -webkit-border-radius: 8px;
