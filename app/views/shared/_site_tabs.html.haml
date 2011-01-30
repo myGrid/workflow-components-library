@@ -1,6 +1,6 @@
-<div id="site_tabs">
-  <ul>
-    <li class="<%= controller_name.downcase == 'experimental_inputs' ? 'active' : '' -%>"><%= link_to "Inputs",experimental_inputs_path -%></li>
-    <li class="<%= controller_name.downcase == 'experiments' ? 'active' : '' -%>"><%= link_to "Experiments",experiments_path -%></li>
-  </ul>
-</div>
+%nav#main_nav
+  #site_tabs
+    %ul
+      %li{:class => "#{@selected_site_tab == :home ? 'active' : ''}" }= link_to 'Home', root_path
+      %li{:class => "#{@selected_site_tab == :component ? 'active' : ''}" }= link_to 'Components', root_path
+      %li{:class => "#{@selected_site_tab == :new_component ? 'active' : ''}" }= link_to 'New Component', root_path

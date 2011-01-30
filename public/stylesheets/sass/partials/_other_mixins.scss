@@ -1,3 +1,10 @@
+@mixin list-item-inline {
+  list-style: none;
+  list-style-image: none;
+  margin: 0;
+  display: inline;
+}
+
 @mixin inline-block {
   display: -moz-inline-block;
   display: -moz-inline-box;
@@ -10,10 +17,10 @@
   -webkit-border-radius: $size;
 }
 
-@mixin shadowed($size) {
-  -moz-box-shadow: $size $size 2px #CCC;
-  -webkit-box-shadow: $size $size 2px #CCC;
-  box-shadow: $size $size 2px #CCC;
+@mixin shadowed($h-offset=1px, $v-offset=-1px, $blur-radius=3px, $colour=#BBB) {
+  -moz-box-shadow: $h-offset $v-offset $blur-radius $colour;
+  -webkit-box-shadow: $h-offset $v-offset $blur-radius $colour;
+  box-shadow: $h-offset $v-offset $blur-radius $colour;
 }
 
 @mixin opacified($amount) {

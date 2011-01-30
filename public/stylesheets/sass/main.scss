@@ -20,6 +20,7 @@ body {
   background-color: $layout-background;
   margin: 0;
   text-align: left;
+  font-family: Arial, sans-serif;
   @include font-smoothing;
 }
 
@@ -87,7 +88,7 @@ body {
 }
 
 #hd {
-  padding: 1em 0;
+  padding: 0;
 }
 
 #bd { }
@@ -97,11 +98,26 @@ body {
 }
 
 #main_header {
-  
-  #logo {
+  margin: 1em 0;
+
+  .logo {
     @include inline-block; 
     vertical-align: middle;
-    margin-right: 1.5em;
+    margin-right: 1em;
+    margin-bottom: 0;
+    
+    img {
+      margin: 0;
+    }
+  }
+  
+  .logo2 {
+    @extend .logo;
+  }
+  
+  h1 {
+    @include inline-block; 
+    vertical-align: middle;
   }
 }
 
@@ -111,7 +127,7 @@ body {
   margin: 0;
   color: #333;
   font-size: 85%;
-  background-color: #F5F5F5;
+  background-color: #C7D4E1;
   @include rounded(3px);
   padding: 5px 6px;
 }
@@ -119,38 +135,37 @@ body {
 /* BEGIN Site Tabs */
 
 #site_tabs {
-  position: absolute;
-  top: 93px;
-  left: 190px;
+
 }
 
 #site_tabs ul {
   list-style: none; 
   margin: 0;
+  margin-left: 1.5em;
   font-weight: bold;
   font-size: 116%;
   line-height: 24px;
   padding-bottom: 1px;
+  padding: 0;
 }
 
 #site_tabs ul li {
-  list-style: none;
-  list-style-image: none;
-  margin: 0;
-  display: inline 
+  @include list-item-inline;
 }
 
 #site_tabs ul li a {
   padding: 6px 1em;
   margin-right: 4px;
-  background-color: #D9D1BA;
+  background-color: #C7D4E1;
   text-decoration: none;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   -moz-border-radius-topleft: 8px;
   -moz-border-radius-topright: 8px;
   -webkit-border-top-left-radius: 8px;
-  -webkit-border-top-right-radius: 8px;  
+  -webkit-border-top-right-radius: 8px;
+  @include shadowed();
+  border-bottom: 1px solid $content-background-color;
 }
 
 #site_tabs ul li a:link { }
@@ -158,37 +173,36 @@ body {
 #site_tabs ul li a:hover
 {
   color: #595246;
-  background: #FFFBEF;
+  background: $content-background-color;
 }
 
 #site_tabs ul li.active a
 {
-  background: #F2EDDC;
+  background: $content-background-color;
 }
 
 #site_tabs ul li.active a:hover
 {
   color: #595246;
-  background: #F2EDDC;
+  background: $content-background-color;
 }
 
 /* END Site Tabs */
 
 #content {
   min-height: 500px;
-  background: #fff;
+  background: $content-background-color;
   padding: 1.2em;
   margin: 0;
-  @include rounded(12px);
+  @include rounded(8px);
+  @include shadowed();
 }
 
 #sidebar {
-  background-color: #F5F5F5;
-  border: 1px solid #DDD;
+  background-color: #C7D4E1;
   min-height: 500px;
   @include rounded(8px);
-  @include shadowed(2px);
-  @include opacified(0.90);
+  @include shadowed();
   
   .inner {
     margin: 6px 4px;

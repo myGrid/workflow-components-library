@@ -1,4 +1,4 @@
 site:
   base_url: "http://localhost:3000/"
-  name: "Workflow Components Libary"
+  name: "Taverna Workflow Components Libary"
   main_logo_image: "taverna-wheel-logo.png"
