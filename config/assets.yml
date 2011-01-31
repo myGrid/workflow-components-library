@@ -10,12 +10,14 @@ stylesheets:
   main:
     - public/stylesheets/reset.css
     - public/stylesheets/grids.css
+    - public/stylesheets/flutie_mod.css
     - public/stylesheets/formtastic.css
     - public/stylesheets/formtastic_changes.css
     - public/stylesheets/main.css
   admin:
     - public/stylesheets/reset.css
     - public/stylesheets/grids.css
+    - public/stylesheets/flutie_mod.css
     - public/stylesheets/formtastic.css
     - public/stylesheets/formtastic_changes.css
     - public/stylesheets/main.css

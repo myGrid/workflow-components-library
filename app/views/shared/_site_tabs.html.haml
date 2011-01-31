@@ -2,5 +2,5 @@
   #site_tabs
     %ul
       %li{:class => "#{@selected_site_tab == :home ? 'active' : ''}" }= link_to 'Home', root_path
-      %li{:class => "#{@selected_site_tab == :component ? 'active' : ''}" }= link_to 'Components', root_path
-      %li{:class => "#{@selected_site_tab == :new_component ? 'active' : ''}" }= link_to 'New Component', root_path
+      %li{:class => "#{@selected_site_tab == :components ? 'active' : ''}" }= link_to 'Components', components_path
+      %li{:class => "#{@selected_site_tab == :new_component ? 'active' : ''}" }= link_to 'New Component', new_component_path

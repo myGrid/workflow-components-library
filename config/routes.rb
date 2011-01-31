@@ -1,23 +1,9 @@
 Wcl::Application.routes.draw do
+  resources :components
+
   root :to => 'home#index'
 
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
   match 'admin' => 'admin/dashboard#index'
-
-  
 
   devise_for :users
   namespace "admin" do

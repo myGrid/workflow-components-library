@@ -1,0 +1,36 @@
+- title "Component"
+
+%p
+  %strong Uuid:
+  = @component.uuid
+%p
+  %strong Version:
+  = @component.version
+%p
+  %strong Label:
+  = @component.label
+%p
+  %strong Title:
+  = @component.title
+%p
+  %strong Taverna Activity:
+  = @component.taverna_activity_id
+%p
+  %strong Submitter:
+  = @component.submitter_id
+%p
+  %strong Submitter Type:
+  = @component.submitter_type
+%p
+  %strong Description:
+  = @component.description
+%p
+  %strong Family:
+  = @component.family_id
+
+%p
+  = link_to "Edit", edit_component_path(@component)
+  |
+  = link_to "Destroy", @component, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", components_path
