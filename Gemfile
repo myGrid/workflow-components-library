@@ -52,3 +52,4 @@ gem "pickle", :group => [:test, :cucumber]
 gem "evergreen", :require => "evergreen/rails", :group => [:test, :development]
 gem "mongrel", '>= 1.2.0.pre2', :group => [:test, :development]
 gem "rb-inotify", ">= 0.5.1", :group => [:test, :development]
+gem "nifty-generators", :group => :development
