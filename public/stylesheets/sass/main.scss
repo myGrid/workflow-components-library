@@ -139,52 +139,78 @@ body {
 }
 
 #site_tabs ul {
-  list-style: none; 
   margin: 0;
   margin-left: 1.5em;
   font-weight: bold;
-  font-size: 116%;
-  line-height: 24px;
-  padding-bottom: 1px;
-  padding: 0;
+  @include font-size(13px);
+  position: relative;
+  height: 34px;
+  padding-top: 2px;
+  overflow: hidden;
 }
 
 #site_tabs ul li {
-  @include list-item-inline;
-}
-
-#site_tabs ul li a {
-  padding: 6px 1em;
-  margin-right: 4px;
-  background-color: #C7D4E1;
-  text-decoration: none;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  -moz-border-radius-topleft: 8px;
-  -moz-border-radius-topright: 8px;
-  -webkit-border-top-left-radius: 8px;
-  -webkit-border-top-right-radius: 8px;
+  @include rounded(6px);
+  float: left;
+  margin: 0 0 0 1em;
+  background-color: $layout-background;
+  border: solid 1px $main-border-color;
+  position: relative;
+  z-index: 1;
   @include shadowed();
-  border-bottom: 1px solid $content-background-color;
 }
 
-#site_tabs ul li a:link { }
-
-#site_tabs ul li a:hover
-{
-  color: #595246;
-  background: $content-background-color;
+#site_tabs ul li.active {
+  z-index: 3;
 }
 
-#site_tabs ul li.active a
-{
-  background: $content-background-color;
+#site_tabs ul li.shadow {
+  width: 100%;
+  height: 2px;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  border: none;
+  background: none;
+  z-index: 2;
+  -webkit-box-shadow: #111 0 -2px 6px;
+  -moz-box-shadow: #111 0 -2px 6px;
+  box-shadow: #111 0 -2px 6px;
 }
 
-#site_tabs ul li.active a:hover
-{
-  color: #595246;
-  background: $content-background-color;
+#site_tabs ul li a:link, 
+#site_tabs ul li a:visited {
+  @include rounded(6px);
+  display: block;
+  text-align: center;
+  height: 36px;
+  line-height: 32px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: $content-background-color;
+  outline: none;
+  float: left;
+  background: -moz-linear-gradient(top center, #456C94, #2B477D 80%) repeat scroll 0 0 #2B477D;
+  background: -webkit-gradient(linear,left bottom,left top,color-stop(.2, #2B477D),color-stop(.8, #456C94));
+  background-color: #456C94;
+  -webkit-transition: background-color 0.3s linear;
+  -moz-transition: background-color 0.3s linear;
+  -o-transition: background-color 0.3s linear;
+  padding: 0 1.5em;
+}
+
+#site_tabs ul li a:hover {
+  background-color: #5a87dd;
+}
+
+#site_tabs ul li.active a:link, 
+#site_tabs ul li.active a:visited {
+  color: $link-color;
+  -webkit-transition: background-color 0.2s linear;
+  background: -moz-linear-gradient(top center, $sidebar-background-color, $content-background-color 25%) repeat scroll 0 0 $content-background-color;
+  background: -webkit-gradient(linear,left bottom,left top,color-stop(.95, $sidebar-background-color),color-stop(.75, $content-background-color));
+  background-color: $content-background-color;
 }
 
 /* END Site Tabs */
@@ -196,10 +222,12 @@ body {
   margin: 0;
   @include rounded(8px);
   @include shadowed();
+  border: solid 1px $main-border-color;
+  z-index: 2;
 }
 
 #sidebar {
-  background-color: #C7D4E1;
+  background-color: $sidebar-background-color;
   min-height: 500px;
   @include rounded(8px);
   @include shadowed();
