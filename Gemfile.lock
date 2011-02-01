@@ -110,9 +110,6 @@ GEM
       activesupport (~> 3.0)
       haml (~> 3.0)
       railties (~> 3.0)
-    hoptoad_notifier (2.4.4)
-      activesupport
-      builder
     hpricot (0.8.3)
     i18n (0.5.0)
     jammit (0.6.0)
@@ -256,7 +253,6 @@ DEPENDENCIES
   fuubar
   haml (~> 3.0.21)
   haml-rails
-  hoptoad_notifier
   hpricot
   jammit
   launchy

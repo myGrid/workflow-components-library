@@ -4,7 +4,6 @@ gem "mysql2"
 gem "sqlite3"
 gem "devise", "~> 1.1.3"
 gem "cancan"
-gem "hoptoad_notifier"
 gem "jammit"
 gem "friendly_id", "~> 3.1"
 gem "will_paginate", "~> 3.0.pre2"
@@ -43,8 +42,8 @@ gem "autotest", :group => [:test]
 gem "autotest-rails", :group => [:test]
 gem "thin", :group => [:test, :cucumber, :development]
 gem "cucumber", :group => [:cucumber]
-gem "database_cleaner", :group => [:test, :cucumber]
 gem "cucumber-rails", :group => [:cucumber]
+gem "database_cleaner", :group => [:test, :cucumber]
 gem "capybara", "~> 0.4.0", :group => [:cucumber]
 gem "launchy", :group => [:cucumber]
 gem "timecop", :group => [:test, :cucumber]
