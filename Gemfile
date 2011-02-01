@@ -26,6 +26,7 @@ gem "wirble"
 gem "awesome_print"
 gem "flutie", "~> 1.1"
 gem "rails_config"
+gem 'sunspot_rails', '~> 1.2'
 
 gem "annotate", :group => :development
 gem "railroady", :group => [:test, :development]
