@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110121152141
+# Schema version: 20110126113319
 #
 # Table name: external_resources
 #
@@ -11,6 +11,10 @@
 #  discovery_url :string(255)
 #  created_at    :datetime
 #  updated_at    :datetime
+#
+# Indexes
+#
+#  index_external_resources_on_resource  (resource) UNIQUE
 #
 
 require 'spec_helper'

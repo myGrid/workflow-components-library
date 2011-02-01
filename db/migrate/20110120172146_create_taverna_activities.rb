@@ -8,6 +8,7 @@ class CreateTavernaActivities < ActiveRecord::Migration
       
       t.timestamps
     end
+    add_index(:taverna_activities, :type, :unique => true)
   end
 
   def self.down

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110121152141
+# Schema version: 20110126113319
 #
 # Table name: taverna_activities
 #
@@ -11,9 +11,27 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #
+# Indexes
+#
+#  index_taverna_activities_on_type  (type) UNIQUE
+#
 
 require 'spec_helper'
 
 describe TavernaActivity do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  it "should not allow duplicates" do 
+    type_value = "http://example.org/types#myActivity"
+    
+    activity1 = Factory.build(:taverna_activity, :type => type_value)
+    expect { activity1.save! }.to_not raise_error
+    
+    activity2 = Factory.build(:taverna_activity, :type => type_value)
+    expect { activity2.save! }.to raise_error
+    
+    expect { Factory.create(:taverna_activity, :type => type_value) }.to raise_error
+    
+    expect { Factory.create(:taverna_activity, :type => type_value + "123") }.to_not raise_error
+  end
+  
 end

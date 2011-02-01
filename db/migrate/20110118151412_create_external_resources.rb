@@ -9,6 +9,7 @@ class CreateExternalResources < ActiveRecord::Migration
       
       t.timestamps
     end
+    add_index(:external_resources, :resource, :unique => true)
   end
 
   def self.down

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110121152141
+# Schema version: 20110126113319
 #
 # Table name: external_resources
 #
@@ -12,12 +12,17 @@
 #  created_at    :datetime
 #  updated_at    :datetime
 #
+# Indexes
+#
+#  index_external_resources_on_resource  (resource) UNIQUE
+#
 
 class ExternalResource < ActiveRecord::Base
   
   include DatabaseValidation
   
-  validates :resource_id,
+  validates :resource,
+            :uniqueness => true,
             :url => { :allow_blank => false }
   
   validates :discovery_url,
