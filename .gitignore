@@ -11,3 +11,5 @@ public/assets
 *.swp
 .redcar
 config/settings/customised.rb
+solr/data
+config/sunspot.yml
