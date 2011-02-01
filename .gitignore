@@ -1,6 +1,7 @@
 .bundle
 .DS_Store
 log/*.log
+log/*.lck
 tmp/**/*
 config/database.yml
 db/*.sqlite3
