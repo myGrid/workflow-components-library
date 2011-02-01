@@ -1,9 +1,9 @@
 = semantic_form_for @component do |f|
-  - f.inputs do
+  = f.inputs do
     = f.error_messages
-    = f.input :label
+    = f.input :label, :hint => "A short title that will be seen in most places. Example: 'DNA 2 RNA'"
     = f.input :title
-    = f.input :taverna_activity_id
+    = f.input :taverna_activity
     = f.input :description
-    - f.buttons do
+    = f.buttons do
       = f.commit_button

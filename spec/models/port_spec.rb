@@ -23,11 +23,5 @@
 require 'spec_helper'
 
 describe Port do
-  
-  describe "#create_one" do
-    it "creates a Port and saves it" do
-      
-    end
-  end
-
+  pending "add some examples to (or delete) #{__FILE__}"
 end

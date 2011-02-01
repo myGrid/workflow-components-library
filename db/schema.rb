@@ -94,6 +94,8 @@ ActiveRecord::Schema.define(:version => 20110126113319) do
     t.datetime "updated_at"
   end
 
+  add_index "external_resources", ["resource"], :name => "index_external_resources_on_resource", :unique => true
+
   create_table "helpers", :force => true do |t|
     t.integer  "port_id",                         :null => false
     t.string   "label",                           :null => false
@@ -161,6 +163,8 @@ ActiveRecord::Schema.define(:version => 20110126113319) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "taverna_activities", ["type"], :name => "index_taverna_activities_on_type", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

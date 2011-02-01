@@ -24,22 +24,19 @@ require 'spec_helper'
 
 describe Component do
   
-  describe "#create_and_find_empty_one" do
-    it "creates then finds an 'empty' Component (to test simple creation of Component and UUID as primary key)" do
-      component = Factory.build(:component)
-      
-      expect { component.save! }.to_not raise_error
-      
-      component_again = Component.find(component.id)
-      
-      component_again.should == component
-    end
+  it "should save and be found successfully" do
+    # Partly tests the UUID as ID functionality
+    
+    component = Factory.build(:component)
+    expect { component.save! }.to_not raise_error
+    
+    component_again = Component.find(component.id)
+    component_again.should == component
   end
   
-  describe "#create_and_update_version" do 
-    it "creates a Component, then updates the 'version' field in the appropriate way(s)" do
+  describe "#version" do 
+    it "should only be updated in the appropriate way(s)" do
       component = Factory(:component)
-      
       component.version.should == "0.0.0"
       
       component.version_bump(:major)
@@ -54,8 +51,8 @@ describe Component do
     end
   end
   
-  describe "#dna_to_rna_test_component" do
-    it "creates a test Component 'DNA to RNA' and checks that the to_hash method builds the right object" do
+  describe "#to_hash" do
+    it "should build the right Hash for a test Component 'DNA to RNA'" do
       component = Factory(:dna_to_rna_component)
       
       input_port = Factory(:dna_to_rna_input_port, :component => component)
