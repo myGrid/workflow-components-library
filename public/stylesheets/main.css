@@ -273,13 +273,13 @@ h1 {
   margin-bottom: 0.5em; }
 
 .faded {
-  color: #999; }
+  color: #777; }
 
 .faded_plus {
-  color: #AAA; }
+  color: #999; }
 
 .faded_plus_plus {
-  color: #BBB; }
+  color: #AAA; }
 
 .separator_pipe {
   margin: 0 1em;
@@ -459,11 +459,18 @@ h1 {
     margin: 0.8em 1em; }
     #sidebar .inner .section {
       font-size: 85%;
-      margin: 1em 0 0 0; }
+      margin: 1.2em 0 0 0; }
       #sidebar .inner .section .heading {
         font-weight: bold;
         text-align: center;
-        margin: 0 0 0.5em 0; }
+        margin: 0 0 0.8em 0; }
+      #sidebar .inner .section ul {
+        padding: 0;
+        margin: 0; }
+        #sidebar .inner .section ul li {
+          padding: 0;
+          margin: 0 0 0.5em 0;
+          list-style: none; }
 
 /* awesome buttons extensions */
 .awesome.regular {

@@ -17,6 +17,7 @@ class ComponentsController < ApplicationController
 
   def create
     @component = Component.new(params[:component])
+    @component.submitter = current_user
     if @component.save
       flash[:notice] = "Successfully created component."
       redirect_to @component

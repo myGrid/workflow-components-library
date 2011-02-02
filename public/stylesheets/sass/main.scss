@@ -38,15 +38,15 @@ h1 {
 }
 
 .faded {
-  color: #999;
+  color: #777;
 }
 
 .faded_plus {
-  color: #AAA;
+  color: #999;
 }
 
 .faded_plus_plus {
-  color: #BBB;
+  color: #AAA;
 }
 
 .separator_pipe {
@@ -252,14 +252,24 @@ h1 {
     
     .section {
       @include font-size(11px);
-      margin: 1em 0 0 0;
+      margin: 1.2em 0 0 0;
       
       .heading {
         font-weight: bold;
         text-align: center;
-        margin: 0 0 0.5em 0;
+        margin: 0 0 0.8em 0;
       }
       
+      ul {
+        padding: 0;
+        margin: 0;
+        
+        li {
+          padding: 0;
+          margin: 0 0 0.5em 0;
+          list-style: none; 
+        }
+      }
     }
   }
 }
