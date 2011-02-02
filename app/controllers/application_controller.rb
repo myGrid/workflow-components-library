@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  before_filter :set_return_to
+  before_filter :set_previous_url
   before_filter :get_selected_site_tab
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -19,9 +19,11 @@ class ApplicationController < ActionController::Base
     return !self.request.format.html?
   end
   
-  def set_return_to
-    unless controller_name.downcase == 'sessions' or is_non_html_request?
-      session[:return_to] = request.request_uri
+  def set_previous_url
+    unless controller_name.downcase == 'sessions' or 
+      (controller_name.downcase == 'users' and [ 'sign_in', 'sign_out' ].include?(action_name.downcase)) or
+      is_non_html_request?
+      session[:previous_url] = request.fullpath
     end
   end
   
@@ -39,8 +41,8 @@ class ApplicationController < ActionController::Base
   
   # For Devise
   def stored_location_for(resource)
-    if current_user && session[:return_to]
-      return session[:return_to]
+    if current_user && session[:previous_url]
+      return session[:previous_url]
     end
     super(resource) 
   end
