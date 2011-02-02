@@ -6,6 +6,11 @@ class Ability
  
     if user.role? :admin
       can :manage, :all
+    elsif user.role? :member
+      can :create, Component
+      can [ :update, :destroy ], Component do |c|
+        c.try(:submitter) == user
+      end
     # elsif user.role? :writter
     #   can :manage, [Post, Asset]
     # elsif user.role? :memeber
@@ -17,6 +22,8 @@ class Ability
     #   can :manage, Asset do |a|
     #     a.try(:owner) == user
     #   end
+    else
+      can :read, :all
     end
   end
 end
