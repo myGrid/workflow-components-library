@@ -8,7 +8,8 @@
 # Setup initial user so we can get in
 ActiveRecord::Base.transaction do
   if User.count == 0 && Role.count == 0
-    user = User.create! :id => 1, :name => "Admin", :email => "admin@example.org", :password => "password", :password_confirmation => "password"
+    user = User.new :name => "Admin", :email => "admin@example.org", :password => "password", :password_confirmation => "password"
+    user.id = 1
     user.confirmed_at = user.confirmation_sent_at
     user.save!
     
