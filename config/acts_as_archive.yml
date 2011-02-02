@@ -1,0 +1,33 @@
+Component:
+  - class: Component::Archive
+    table: archived_components
+ConfigFieldMapping:
+  - class: ConfigFieldMapping::Archive
+    table: archived_config_field_mappings
+ConfigFieldOption:
+  - class: ConfigFieldOption::Archive
+    table: archived_config_field_options
+ConfigField:
+  - class: ConfigField::Archive
+    table: archived_config_fields
+ExampleValue:
+  - class: ExampleValue::Archive
+    table: archived_example_values
+ExternalResource:
+  - class: ExternalResource::Archive
+    table: archived_external_resources
+Helper:
+  - class: Helper::Archive
+    table: archived_helpers
+PortMapping:
+  - class: PortMapping::Archive
+    table: archived_port_mappings
+Port:
+  - class: Port::Archive
+    table: archived_ports
+TavernaActivity:
+  - class: TavernaActivity::Archive
+    table: archived_taverna_activities
+User:
+  - class: User:Archive
+    table: archived_users

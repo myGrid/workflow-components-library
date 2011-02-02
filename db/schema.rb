@@ -12,6 +12,130 @@
 
 ActiveRecord::Schema.define(:version => 20110126113319) do
 
+  create_table "archived_config_field_mappings", :force => true do |t|
+    t.integer  "config_field_id",              :null => false
+    t.boolean  "to_activity_config_property",  :null => false
+    t.string   "activity_config_property_ref"
+    t.boolean  "to_component_port",            :null => false
+    t.integer  "component_port_id"
+    t.boolean  "to_processor_port",            :null => false
+    t.string   "processor_port_ref"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "archived_config_field_mappings", ["config_field_id"], :name => "index_config_field_mappings_on_config_field_id"
+
+  create_table "archived_config_field_options", :force => true do |t|
+    t.integer  "config_field_id", :null => false
+    t.string   "label",           :null => false
+    t.string   "value",           :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "archived_config_field_options", ["config_field_id"], :name => "index_config_field_options_on_config_field_id"
+
+  create_table "archived_config_fields", :force => true do |t|
+    t.string   "component_id",           :limit => 36,                          :null => false
+    t.string   "name",                                                          :null => false
+    t.string   "label",                                                         :null => false
+    t.text     "description",            :limit => 16777215
+    t.integer  "field_type_cd",          :limit => 1,                           :null => false
+    t.string   "data_type",                                                     :null => false
+    t.string   "config_group"
+    t.boolean  "required",                                   :default => true
+    t.text     "default_value"
+    t.boolean  "fixed",                                      :default => false
+    t.boolean  "hidden",                                     :default => false
+    t.boolean  "multiple",                                   :default => false
+    t.boolean  "constrained_to_options",                     :default => false
+    t.text     "additional_constraints"
+    t.boolean  "make_input_port",                            :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "archived_config_fields", ["component_id"], :name => "index_config_fields_on_component_id"
+
+  create_table "archived_example_values", :force => true do |t|
+    t.integer  "port_id",    :null => false
+    t.string   "data_type",  :null => false
+    t.text     "value",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "archived_example_values", ["port_id"], :name => "index_example_values_on_port_id"
+
+  create_table "archived_external_resources", :force => true do |t|
+    t.string   "resource_ref",                      :null => false
+    t.string   "type_ref",                          :null => false
+    t.string   "title",                             :null => false
+    t.text     "description",   :limit => 16777215
+    t.string   "discovery_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "archived_external_resources", ["resource_ref"], :name => "index_external_resources_on_resource_ref", :unique => true
+
+  create_table "archived_helpers", :force => true do |t|
+    t.integer  "port_id",                         :null => false
+    t.string   "label",                           :null => false
+    t.string   "title",                           :null => false
+    t.text     "description", :limit => 16777215
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "archived_helpers", ["port_id"], :name => "index_helpers_on_port_id"
+
+  create_table "archived_port_mappings", :force => true do |t|
+    t.integer  "port_id",            :null => false
+    t.boolean  "to_processor_port",  :null => false
+    t.string   "processor_port_ref"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "archived_port_mappings", ["port_id"], :name => "index_port_mappings_on_port_id"
+
+  create_table "archived_ports", :force => true do |t|
+    t.string   "component_id",  :limit => 36,                         :null => false
+    t.integer  "usage_type_cd", :limit => 1,                          :null => false
+    t.string   "name",                                                :null => false
+    t.string   "label",                                               :null => false
+    t.text     "description",   :limit => 16777215
+    t.integer  "depth"
+    t.boolean  "visible",                           :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "archived_ports", ["component_id", "usage_type_cd"], :name => "index_ports_on_component_id_and_usage_type_cd"
+  add_index "archived_ports", ["component_id"], :name => "index_ports_on_component_id"
+
+  create_table "archived_taverna_activities", :force => true do |t|
+    t.string   "type_ref",                          :null => false
+    t.string   "title",                             :null => false
+    t.text     "description",   :limit => 16777215
+    t.string   "discovery_url",                     :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "archived_taverna_activities", ["type_ref"], :name => "index_taverna_activities_on_type_ref", :unique => true
+
   create_table "components", :id => false, :force => true do |t|
     t.string   "uuid",                :limit => 36,       :null => false
     t.string   "version",             :limit => 20,       :null => false
