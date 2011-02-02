@@ -10,6 +10,7 @@ ActiveRecord::Base.transaction do
   if User.count == 0 && Role.count == 0
     user = User.new :name => "Admin", :email => "admin@example.org", :password => "password", :password_confirmation => "password"
     user.id = 1
+    user.save!
     user.confirmed_at = user.confirmation_sent_at
     user.save!
     
