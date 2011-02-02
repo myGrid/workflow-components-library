@@ -41,6 +41,8 @@ class ConfigField < ActiveRecord::Base
             :complex => 6 },
           :upcase => true
   
+  include DatabaseValidation
+  
   validates_as_enum :field_type
 
   validates :component,

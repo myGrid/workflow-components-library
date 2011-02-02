@@ -1,3 +1,17 @@
+/* -------------------------------------------------------------------------------------------------
+
+Load this stylesheet after formtastic.css in your layouts to override the CSS to suit your needs.
+This will allow you to update formtastic.css with new releases without clobbering your own changes.
+
+For example, to make the inline hint paragraphs a little darker in color than the standard #666:
+
+form.formtastic fieldset > ol > li p.inline-hints { color:#333; }
+
+HINT:
+The following style may be *conditionally* included for improved support on older versions of IE(<8)
+form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
+
+--------------------------------------------------------------------------------------------------*/
 body {
   font-size: 13px;
   font-family: sans-serif;
@@ -9,6 +23,102 @@ select, input, textarea, button {
 
 pre, code, kbd, samp {
   font-family: monospace, sans-serif; }
+
+form.formtastic fieldset > ol > li .inline-hints {
+  color: #776; }
+
+/* Fieldsets */
+form.formtastic fieldset {
+  background: #f1f1f1;
+  border: 1px solid #e3e3e3;
+  margin: 0 0 1em 0;
+  padding: 1em 1.2em;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px; }
+
+form.formtastic fieldset fieldset,
+form.formtastic fieldset fieldset fieldset {
+  border: 0;
+  padding: 0; }
+
+form.formtastic legend {
+  font-weight: bold; }
+
+form.formtastic .ie6 legend, .ie7 legend {
+  margin-left: -7px; }
+
+form.formtastic .radio fieldset {
+  margin: 0;
+  padding: 0; }
+
+/* Select fields */
+form.formtastic fieldset .select select {
+  width: 200px;
+  font-size: inherit; }
+
+form.formtastic ol li.error input {
+  background: #FBE3E4; }
+
+form.formtastic ol li.file {
+  background: #e1e1e1;
+  border: 1px solid #c8c8c8;
+  padding: 10px; }
+
+/* Text fields */
+form.formtastic input[type="color"],
+form.formtastic input[type="date"],
+form.formtastic input[type="datetime"],
+form.formtastic input[type="datetime-local"],
+form.formtastic input[type="email"],
+form.formtastic input[type="month"],
+form.formtastic input[type="number"],
+form.formtastic input[type="password"],
+form.formtastic input[type="range"],
+form.formtastic input[type="search"],
+form.formtastic input[type="tel"],
+form.formtastic input[type="text"],
+form.formtastic input[type="time"],
+form.formtastic input[type="url"],
+form.formtastic input[type="week"] {
+  font-size: inherit;
+  padding: 3px 2px;
+  width: 300px; }
+
+form.formtastic .ie6 input {
+  vertical-align: text-bottom; }
+
+form.formtastic input[disabled='disabled'] {
+  background-color: #fcfcfc;
+  cursor: default; }
+
+form.formtastic input[type="checkbox"] {
+  margin: 0 3px 0 0;
+  position: relative;
+  top: -2px;
+  vertical-align: middle; }
+
+form.formtastic .ie7 input[type="checkbox"] {
+  vertical-align: baseline; }
+
+form.formtastic input[type="radio"] {
+  margin: 0 3px 0 0;
+  position: relative;
+  top: -2px;
+  vertical-align: middle; }
+
+form.formtastic .check_boxes label {
+  display: inline;
+  padding: 0;
+  vertical-align: middle; }
+
+form.formtastic .radio label {
+  padding: 0; }
+
+input[type="submit"],
+form.formtastic input[type="submit"] {
+  padding: 0.3em 0.4em;
+  font-size: 124%; }
 
 body, select, input, textarea {
   color: #444444; }
@@ -251,7 +361,7 @@ body {
   float: left;
   margin: 0 0 0 1em;
   background-color: #dce5ef;
-  border: solid 1px #eeeeee;
+  border: solid 1px #e3e3e3;
   position: relative;
   z-index: 1;
   -moz-box-shadow: 1px -1px 3px #aaaaaa;
@@ -304,15 +414,15 @@ body {
 #site_tabs ul li.active a:visited {
   color: #2b477d;
   -webkit-transition: background-color 0.2s linear;
-  background: -moz-linear-gradient(top center, #c7d4e1, #f6f6f6 25%) repeat scroll 0 0 #f6f6f6;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0.95, #c7d4e1), color-stop(0.75, #f6f6f6));
+  background: -moz-linear-gradient(top center, #c7d4e1, #f6f6f6 20%) repeat scroll 0 0 #f6f6f6;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0.96, #c7d4e1), color-stop(0.8, #f6f6f6));
   background-color: #f6f6f6; }
 
 /* END Site Tabs */
 #content {
   min-height: 500px;
   background: #f6f6f6;
-  padding: 1.2em;
+  padding: 1.4em 1.6em;
   margin: 0;
   border-radius: 8px;
   -moz-border-radius: 8px;
@@ -320,7 +430,6 @@ body {
   -moz-box-shadow: 1px -1px 3px #aaaaaa;
   -webkit-box-shadow: 1px -1px 3px #aaaaaa;
   box-shadow: 1px -1px 3px #aaaaaa;
-  border: solid 1px #eeeeee;
   z-index: 2; }
 
 #sidebar {

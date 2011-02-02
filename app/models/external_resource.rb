@@ -19,6 +19,8 @@
 
 class ExternalResource < ActiveRecord::Base
   
+  include DatabaseValidation
+  
   validates :resource_ref,
             :uniqueness => true,
             :url => { :allow_blank => false }

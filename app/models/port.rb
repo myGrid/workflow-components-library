@@ -26,6 +26,8 @@ class Port < ActiveRecord::Base
   
   as_enum :usage_type, [ :input, :output ], :upcase => true
 
+  include DatabaseValidation
+  
   validates_as_enum :usage_type
   
   validates :component,

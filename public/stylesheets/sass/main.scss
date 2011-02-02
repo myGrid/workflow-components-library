@@ -1,11 +1,13 @@
 @import "partials/variables";
 @import "partials/fonts";
+@import "partials/forms";
 @import "partials/defaults";
 @import "partials/media";
 @import "partials/other_mixins";
 
 @mixin main {
   @include fonts;
+  @include forms;
   @include defaults;
   @include media;
 }
@@ -69,7 +71,7 @@ body {
 }
 
 .additional_info_text {
-  font-size: 93%;
+  @include font-size(12px);
   color: #666666;
   font-weight: normal;
 }
@@ -120,7 +122,7 @@ body {
   padding: 0;
   margin: 0;
   color: #333;
-  font-size: 85%;
+  @include font-size(11px);
   background-color: #C7D4E1;
   @include rounded(3px);
   padding: 5px 6px;
@@ -202,8 +204,8 @@ body {
 #site_tabs ul li.active a:visited {
   color: $link-color;
   -webkit-transition: background-color 0.2s linear;
-  background: -moz-linear-gradient(top center, $sidebar-background-color, $content-background-color 25%) repeat scroll 0 0 $content-background-color;
-  background: -webkit-gradient(linear,left bottom,left top,color-stop(.95, $sidebar-background-color),color-stop(.75, $content-background-color));
+  background: -moz-linear-gradient(top center, $sidebar-background-color, $content-background-color 20%) repeat scroll 0 0 $content-background-color;
+  background: -webkit-gradient(linear,left bottom,left top,color-stop(.96, $sidebar-background-color),color-stop(.80, $content-background-color));
   background-color: $content-background-color;
 }
 
@@ -212,11 +214,10 @@ body {
 #content {
   min-height: 500px;
   background: $content-background-color;
-  padding: 1.2em;
+  padding: 1.4em 1.6em;
   margin: 0;
   @include rounded(8px);
   @include shadowed();
-  border: solid 1px $main-border-color;
   z-index: 2;
 }
 

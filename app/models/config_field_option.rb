@@ -17,6 +17,8 @@
 
 class ConfigFieldOption < ActiveRecord::Base
   
+  include DatabaseValidation
+  
   attr_accessible :config_field_id,
                   :label,
                   :value

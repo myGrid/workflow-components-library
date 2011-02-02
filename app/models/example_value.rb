@@ -17,6 +17,8 @@
 
 class ExampleValue < ActiveRecord::Base
   
+  include DatabaseValidation
+  
   validates :port,
             :existence => true
   

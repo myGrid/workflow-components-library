@@ -17,6 +17,8 @@
 
 class PortMapping < ActiveRecord::Base
   
+  include DatabaseValidation
+  
   # TODO: validates :processor_port_ref,
   #          :url => { :allow_blank => true }
   

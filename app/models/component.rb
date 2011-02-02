@@ -31,6 +31,11 @@ class Component < ActiveRecord::Base
   
   default_value_for :version, "0.0.0"
   
+  include DatabaseValidation
+  
+  validates :label,
+            :presence => true
+  
   validates :taverna_activity,
             :existence => true
             

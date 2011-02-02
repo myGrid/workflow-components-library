@@ -18,6 +18,8 @@
 
 class TavernaActivity < ActiveRecord::Base
   
+  include DatabaseValidation
+  
   validates :type_ref,
             :uniqueness => true,
             :url => { :allow_blank => false }

@@ -20,7 +20,9 @@
 #
 
 class ConfigFieldMapping < ActiveRecord::Base
-
+  
+  include DatabaseValidation
+  
   # TODO: validates :activity_config_property_ref,
   #          :url => { :allow_blank => true }
             
