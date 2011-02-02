@@ -28,6 +28,7 @@ gem "awesome_print"
 gem "rails_config"
 gem 'sunspot_rails', '~> 1.2'
 gem 'acts_as_archive', '>= 0.4'
+gem 'yaml_db', '>= 0.2'
 
 gem "flutie", "~> 1.1", :group => :development
 gem 'jquery-rails', '>= 0.2.6', :group => :development
