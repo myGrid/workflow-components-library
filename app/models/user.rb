@@ -35,8 +35,17 @@
 
 class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
-  devise :database_authenticatable, :token_authenticatable, :recoverable, :rememberable, :trackable, :confirmable
+  
+  devise :database_authenticatable, 
+         :token_authenticatable, 
+         :recoverable, 
+         :rememberable, 
+         :trackable, 
+         :confirmable#,
+         #:registerable
+  
   default_scope :conditions => { :deleted_at => nil }
+  
   validates_presence_of     :name, :email
   validates_presence_of     :password, :on => :create
   validates_confirmation_of :password, :on => :create

@@ -1,10 +1,10 @@
-- title "Sign In"
+= title "Sign In"
 
 = semantic_form_for resource,
                     :as => resource_name, 
                     :url => session_path(resource_name), 
                     :html => { :class => "sign_in_main" } do |f|
-  = f.error_messages
+  = devise_error_messages!
   = f.inputs do
     = f.input :email
     = f.input :password
@@ -12,3 +12,4 @@
       = f.input :remember_me, :as => :boolean
     = f.buttons do
       = f.commit_button "Sign In"
+= # render :partial => "devise/shared/links"
