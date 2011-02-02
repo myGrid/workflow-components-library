@@ -2,10 +2,10 @@
   %nav#user_nav
     %ul
       = render 'devise/menu/login_items'
-  %div.logo
+  .logo
     = link_to image_tag(Settings.site.main_logo_image, :size => "46x43", :alt => Settings.site.name), root_path
-  %div.logo2
+  .logo2
     = link_to image_tag("mygrid-logo.png", :alt => "myGrid", :size => "94x32"), "http://www.mygrid.org.uk"
-  %h1
+  .site_title
     = Settings.site.name
 = render 'shared/site_tabs'

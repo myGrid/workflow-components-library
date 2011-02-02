@@ -33,8 +33,7 @@
               = render :partial => "shared/messages"
               = yield
         #sidebar.yui-b
-          %div.inner
-            &nbsp;
+          = render :partial => "shared/sidebar"
       #ft
         = render :partial => "shared/footer"
         = render :partial => "shared/end_scripts"

@@ -1,0 +1,8 @@
+.inner
+  .section
+    %p.heading
+      Latest Components
+    %ul
+    - Component.latest.each do |component|
+      %li
+        %p= component.label

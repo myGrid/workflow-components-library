@@ -5,4 +5,15 @@ module ApplicationHelper
     return content_tag(:h1, page_title, options)
   end
   
+  def button(content_for_button, link, options={})
+    options.reverse_merge!({ 
+      :color => "regular",
+      :size => "large" 
+    })
+    
+    options[:class] = "awesome #{options[:color]} #{options[:size]} button"
+    
+    return link_to(content_for_button, link, options)
+  end
+  
 end

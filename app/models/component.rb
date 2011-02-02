@@ -71,6 +71,12 @@ class Component < ActiveRecord::Base
     text :description
   end
   
+  def self.latest(limit=10)
+    self.find(:all,
+              :order => "created_at DESC",
+              :limit => limit)
+  end
+  
   # FIXME: change all keys to symbols (for a slight perf improvement)
   def to_hash
     result = { 

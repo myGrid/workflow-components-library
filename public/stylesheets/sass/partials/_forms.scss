@@ -21,11 +21,11 @@ form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
   
   /* Fieldsets */
   form.formtastic fieldset {
-    background: #f1f1f1;
+    background: #FFF;
     border: 1px solid $main-border-color;
     margin: 0 0 1em 0;
-    padding: 1em 1.2em; 
-    @include rounded(3px); }
+    padding: 1.5em 1.4em 0.5em 1.4em; 
+    @include rounded(5px); }
   
   form.formtastic fieldset fieldset,
   form.formtastic fieldset fieldset fieldset {
@@ -44,7 +44,8 @@ form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
     
   /* Select fields */
   form.formtastic fieldset .select select {
-    width: 200px;
+    width: 300px;
+    padding: 3px 2px;
     font-size: inherit; }
   
   form.formtastic ol li.error input {
