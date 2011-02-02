@@ -31,11 +31,17 @@ class Component < ActiveRecord::Base
   
   default_value_for :version, "0.0.0"
   
-  include DatabaseValidation
-  
   validates :taverna_activity,
             :existence => true
             
+  attr_accessible :label, 
+                  :title, 
+                  :taverna_activity_id, 
+                  :submitter_id, 
+                  :submitter_type, 
+                  :description, 
+                  :family_id
+  
   has_version_field
 
   belongs_to :taverna_activity
@@ -53,6 +59,13 @@ class Component < ActiveRecord::Base
   has_many :config_fields,
            :dependent => :destroy
   
+  # Sunspot / Solr configuration
+  searchable do
+    text :label, :default_boost => 2
+    text :title, :default_boost => 2
+    text :description
+  end
+  
   # FIXME: change all keys to symbols (for a slight perf improvement)
   def to_hash
     result = { 
@@ -63,7 +76,7 @@ class Component < ActiveRecord::Base
       'description' => self.description,
       'alternative_labels' => [ "DNA 2 RNA", "DNA2RNA" ],   # FIXME: stubbed
       'taverna_activity' => {
-        'type' => self.taverna_activity.type,
+        'type' => self.taverna_activity.type_ref,
         'discovery_url' => self.taverna_activity.discovery_url
       },
       'creator' => {

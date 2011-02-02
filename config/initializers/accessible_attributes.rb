@@ -1,3 +1,5 @@
+# IMPORTANT: this ensures that no attributes are mass-assignable 
+# unless explicitly specified by a 'attr_accessible' configuration in the Model
 class ActiveRecord::Base
   attr_accessible
   attr_accessor :accessible

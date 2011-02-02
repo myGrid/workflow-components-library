@@ -43,13 +43,27 @@ class ConfigField < ActiveRecord::Base
   
   validates_as_enum :field_type
 
-  include DatabaseValidation
-  
   validates :component,
             :existence => true
   
   validates :data_type,
             :url => { :allow_blank => false }
+  
+  attr_accessible :component_id,
+                  :name,
+                  :label,
+                  :description,
+                  :field_type_cd,
+                  :data_type,
+                  :config_group,
+                  :required,
+                  :default_value,
+                  :fixed,
+                  :hidden,
+                  :multiple,
+                  :constrained_to_options,
+                  :additional_constraints,
+                  :make_input_port
   
   belongs_to :component
   

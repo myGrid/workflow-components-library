@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(:version => 20110126113319) do
   add_index "example_values", ["port_id"], :name => "index_example_values_on_port_id"
 
   create_table "external_resources", :force => true do |t|
-    t.string   "resource",                          :null => false
-    t.string   "type",                              :null => false
+    t.string   "resource_ref",                      :null => false
+    t.string   "type_ref",                          :null => false
     t.string   "title",                             :null => false
     t.text     "description",   :limit => 16777215
     t.string   "discovery_url"
@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(:version => 20110126113319) do
     t.datetime "updated_at"
   end
 
-  add_index "external_resources", ["resource"], :name => "index_external_resources_on_resource", :unique => true
+  add_index "external_resources", ["resource_ref"], :name => "index_external_resources_on_resource_ref", :unique => true
 
   create_table "helpers", :force => true do |t|
     t.integer  "port_id",                         :null => false
@@ -156,7 +156,7 @@ ActiveRecord::Schema.define(:version => 20110126113319) do
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "taverna_activities", :force => true do |t|
-    t.string   "type",                              :null => false
+    t.string   "type_ref",                          :null => false
     t.string   "title",                             :null => false
     t.text     "description",   :limit => 16777215
     t.string   "discovery_url",                     :null => false
@@ -164,7 +164,7 @@ ActiveRecord::Schema.define(:version => 20110126113319) do
     t.datetime "updated_at"
   end
 
-  add_index "taverna_activities", ["type"], :name => "index_taverna_activities_on_type", :unique => true
+  add_index "taverna_activities", ["type_ref"], :name => "index_taverna_activities_on_type_ref", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                               :default => "", :null => false

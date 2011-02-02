@@ -16,4 +16,9 @@
 #
 
 class ConfigFieldOption < ActiveRecord::Base
+  
+  attr_accessible :config_field_id,
+                  :label,
+                  :value
+  
 end

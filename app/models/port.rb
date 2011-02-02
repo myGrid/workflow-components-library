@@ -28,14 +28,19 @@ class Port < ActiveRecord::Base
 
   validates_as_enum :usage_type
   
-  include DatabaseValidation
-  
   validates :component,
             :existence => true
   
   validates :depth,
             :numericality => { :greater_than_or_equal_to => 0 }
-            
+  
+  attr_accessible :component_id,
+                  :name,
+                  :label,
+                  :description,
+                  :depth,
+                  :visible
+     
   belongs_to :component
   
   has_many :example_values,

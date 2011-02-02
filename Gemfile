@@ -19,7 +19,8 @@ gem "addressable"
 gem "validates_existence", ">= 0.4"
 gem "simple_enum"
 gem "default_value_for"
-gem "database_validation", ">= 0.0.5"
+# gem "database_validation", ">= 0.0.5"     Using 'validates_schema' instead 
+# gem 'validates_schema'                    Doh!! This isn't working!
 gem "sanitize"
 gem "version_info"
 gem "wirble"

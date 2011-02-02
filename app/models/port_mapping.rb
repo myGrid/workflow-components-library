@@ -17,14 +17,16 @@
 
 class PortMapping < ActiveRecord::Base
   
-  include DatabaseValidation
-  
   # TODO: validates :processor_port_ref,
   #          :url => { :allow_blank => true }
   
   validates :port,
             :existence => true
-            
+  
+  attr_accessible :port_id,
+                  :to_processor_port,
+                  :processor_port_ref
+  
   belongs_to :port
   
 end

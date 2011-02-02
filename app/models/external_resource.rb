@@ -4,8 +4,8 @@
 # Table name: external_resources
 #
 #  id            :integer(4)      not null, primary key
-#  resource      :string(255)     not null
-#  type          :string(255)     not null
+#  resource_ref  :string(255)     not null
+#  type_ref      :string(255)     not null
 #  title         :string(255)     not null
 #  description   :text(16777215)
 #  discovery_url :string(255)
@@ -14,18 +14,22 @@
 #
 # Indexes
 #
-#  index_external_resources_on_resource  (resource) UNIQUE
+#  index_external_resources_on_resource_ref  (resource_ref) UNIQUE
 #
 
 class ExternalResource < ActiveRecord::Base
   
-  include DatabaseValidation
-  
-  validates :resource,
+  validates :resource_ref,
             :uniqueness => true,
             :url => { :allow_blank => false }
   
   validates :discovery_url,
             :url => { :allow_blank => true }
+  
+  attr_accessible :resource_ref,
+                  :type_ref,
+                  :title,
+                  :description,
+                  :discovery_url
   
 end

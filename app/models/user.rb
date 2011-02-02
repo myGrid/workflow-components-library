@@ -49,6 +49,12 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
   
+  # Sunspot / Solr configuration
+  searchable do
+    text :name, :default_boost => 2
+    text :homepage
+  end
+  
   def role?(role)
     return !!self.roles.find_by_name( Role.sanitize role )
   end

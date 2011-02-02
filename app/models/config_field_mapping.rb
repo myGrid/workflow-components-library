@@ -21,13 +21,19 @@
 
 class ConfigFieldMapping < ActiveRecord::Base
 
-  include DatabaseValidation
-  
-  # TODO: validates :activity_config_property_id,
+  # TODO: validates :activity_config_property_ref,
   #          :url => { :allow_blank => true }
             
   # TODO: validates :processor_port_id,
   #          :url => { :allow_blank => true }
+  
+  attr_accessible :config_field_id,
+                  :to_activity_config_property,
+                  :activity_config_property_ref,
+                  :to_component_port,
+                  :component_port_id,
+                  :to_processor_port,
+                  :processor_port_ref
   
   belongs_to :config_field
   

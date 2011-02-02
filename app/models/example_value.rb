@@ -17,11 +17,13 @@
 
 class ExampleValue < ActiveRecord::Base
   
-  include DatabaseValidation
-  
   validates :port,
             :existence => true
-            
+  
+  attr_accessible :port_id,
+                  :data_type,
+                  :value
+      
   belongs_to :port
   
 end
