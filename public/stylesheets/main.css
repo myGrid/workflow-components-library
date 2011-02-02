@@ -17,7 +17,7 @@ html {
   overflow-y: scroll; }
 
 a, a:active, a:visited {
-  color: #607890; }
+  color: #2b477d; }
 
 a:hover {
   color: #003366; }
@@ -71,17 +71,17 @@ button, input, select, textarea {
   margin: 0; }
 
 ::-moz-selection {
-  background: #ff5e99;
+  background: #22384f;
   color: white;
   text-shadow: none; }
 
 ::selection {
-  background: #ff5e99;
+  background: #22384f;
   color: white;
   text-shadow: none; }
 
 a:link {
-  -webkit-tap-highlight-color: #ff5e99; }
+  -webkit-tap-highlight-color: #22384f; }
 
 button {
   width: auto;
@@ -240,7 +240,7 @@ body {
   font-weight: bold;
   font-size: 100%;
   position: relative;
-  height: 34px;
+  height: 32px;
   padding-top: 2px;
   overflow: hidden; }
 
@@ -251,7 +251,7 @@ body {
   float: left;
   margin: 0 0 0 1em;
   background-color: #dce5ef;
-  border: solid 1px #f7f7f7;
+  border: solid 1px #eeeeee;
   position: relative;
   z-index: 1;
   -moz-box-shadow: 1px -1px 3px #aaaaaa;
@@ -302,7 +302,7 @@ body {
 
 #site_tabs ul li.active a:link,
 #site_tabs ul li.active a:visited {
-  color: #607890;
+  color: #2b477d;
   -webkit-transition: background-color 0.2s linear;
   background: -moz-linear-gradient(top center, #c7d4e1, #f6f6f6 25%) repeat scroll 0 0 #f6f6f6;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0.95, #c7d4e1), color-stop(0.75, #f6f6f6));
@@ -320,7 +320,7 @@ body {
   -moz-box-shadow: 1px -1px 3px #aaaaaa;
   -webkit-box-shadow: 1px -1px 3px #aaaaaa;
   box-shadow: 1px -1px 3px #aaaaaa;
-  border: solid 1px #f7f7f7;
+  border: solid 1px #eeeeee;
   z-index: 2; }
 
 #sidebar {
