@@ -25,10 +25,11 @@ gem "sanitize"
 gem "version_info"
 gem "wirble"
 gem "awesome_print"
-gem "flutie", "~> 1.1"
 gem "rails_config"
 gem 'sunspot_rails', '~> 1.2'
 
+gem "flutie", "~> 1.1", :group => :development
+gem 'jquery-rails', '>= 0.2.6', :group => :development
 gem "annotate", :group => :development
 gem "railroady", :group => [:test, :development]
 gem "rails3-generators", :group => :development

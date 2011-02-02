@@ -116,6 +116,9 @@ GEM
     jammit (0.6.0)
       closure-compiler (>= 0.1.0)
       yui-compressor (>= 0.9.1)
+    jquery-rails (0.2.6)
+      rails (~> 3.0)
+      thor (~> 0.14.4)
     json (1.4.6)
     json_pure (1.5.1)
     launchy (0.3.7)
@@ -266,6 +269,7 @@ DEPENDENCIES
   haml-rails
   hpricot
   jammit
+  jquery-rails (>= 0.2.6)
   launchy
   mocha
   mongrel (>= 1.2.0.pre2)
