@@ -1,36 +1,23 @@
-- title "Component"
+- title "Component: #{@component.label} (v#{@component.version})"
 
-%p
-  %strong Uuid:
-  = @component.uuid
-%p
-  %strong Version:
-  = @component.version
-%p
-  %strong Label:
+%h1
+  Component:
   = @component.label
-%p
-  %strong Title:
-  = @component.title
-%p
+  %span.extra_text
+    (v#{@component.version})
+%h3= @component.title
+%p.buttons
+  = button "Edit", edit_component_path(@component), :size => :medium
+  = button "Destroy", @component, :confirm => 'Are you sure?', :method => :delete, :size => :medium
+  = button "View All", components_path, :size => :medium
+%br
+%p.center
   %strong Taverna Activity:
-  = @component.taverna_activity_id
-%p
+  = @component.taverna_activity.title
+  %span.separator_pipe
+    |
   %strong Submitter:
-  = @component.submitter_id
-%p
-  %strong Submitter Type:
-  = @component.submitter_type
-%p
+  = @component.submitter_name
+%p.box_description
   %strong Description:
   = @component.description
-%p
-  %strong Family:
-  = @component.family_id
-
-%p
-  = link_to "Edit", edit_component_path(@component)
-  |
-  = link_to "Destroy", @component, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", components_path

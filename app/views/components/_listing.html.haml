@@ -1,0 +1,17 @@
+.listing_item
+  %p.label
+    = link_to component.label, component
+    %span.extra_text
+      (v#{component.version})
+  %h4= component.title
+  %p.center
+    %strong Taverna Activity:
+    = component.taverna_activity.title
+    %span.separator_pipe
+      |
+    %strong Submitter:
+    = component.submitter_name
+  %p.desc
+    %strong Description:
+    = component.description
+    

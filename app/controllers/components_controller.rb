@@ -4,11 +4,10 @@ class ComponentsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @components = Component.all
+    @components = Component.paginate :page => @page, :per_page => @per_page
   end
 
   def show
-    @component = Component.find(params[:id])
   end
 
   def new
@@ -27,11 +26,9 @@ class ComponentsController < ApplicationController
   end
 
   def edit
-    @component = Component.find(params[:id])
   end
 
   def update
-    @component = Component.find(params[:id])
     if @component.update_attributes(params[:component])
       flash[:notice] = "Successfully updated component."
       redirect_to component_url
@@ -41,7 +38,6 @@ class ComponentsController < ApplicationController
   end
 
   def destroy
-    @component = Component.find(params[:id])
     @component.destroy
     flash[:notice] = "Successfully destroyed component."
     redirect_to components_url

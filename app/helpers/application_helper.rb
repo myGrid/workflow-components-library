@@ -13,7 +13,7 @@ module ApplicationHelper
     
     options[:class] = "awesome #{options[:color]} #{options[:size]} button"
     
-    return link_to(content_for_button, link, options)
+    return link_to(content_for_button, link, options.delete_if{|o| [ :size, :color ].include? o})
   end
   
 end

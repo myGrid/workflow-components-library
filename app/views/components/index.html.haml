@@ -1,29 +1,8 @@
 - title "Components"
 
-%table
-  %tr
-    %th Uuid
-    %th Version
-    %th Label
-    %th Title
-    %th Taverna activity
-    %th Submitter
-    %th Submitter type
-    %th Description
-    %th Family
-  - for component in @components
-    %tr
-      %td= component.uuid
-      %td= component.version
-      %td= component.label
-      %td= component.title
-      %td= component.taverna_activity_id
-      %td= component.submitter_id
-      %td= component.submitter_type
-      %td= component.description
-      %td= component.family_id
-      %td= link_to 'Show', component
-      %td= link_to 'Edit', edit_component_path(component)
-      %td= link_to 'Destroy', component, :confirm => 'Are you sure?', :method => :delete
+= render :partial => "listing", :collection => @components, :as => :component
 
-%p= link_to "New Component", new_component_path(component)
+= will_paginate @components
+
+%p.center
+  = button "New Component", new_component_path
