@@ -708,3 +708,45 @@ form.sign_up_main {
 
 .box_currentuser_specific * {
   vertical-align: middle; }
+
+/* BEGIN content tabs styles */
+.tab-container {
+  background-color: #FFF;
+  border: solid 1px #CCC;
+  height: 300px; }
+  .tab-container ul {
+    height: 300px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #f1f1f1;
+    float: left;
+    border-right: solid 1px #CCC; }
+    .tab-container ul li {
+      width: 100px;
+      margin: 0;
+      padding: 0;
+      text-align: center; }
+      .tab-container ul li a {
+        display: block;
+        padding: 15px 0;
+        outline: none; }
+      .tab-container ul li a:hover {
+        text-decoration: underline; }
+      .tab-container ul li a.selected-tab {
+        font-weight: bold;
+        text-decoration: none; }
+    .tab-container ul li.selected-tab {
+      background: #fff;
+      position: relative;
+      left: 1px;
+      border: 0 solid #CCC;
+      border-width: 1px 0; }
+    .tab-container ul li:first-child.selected-tab {
+      border-top: none; }
+  .tab-container .panel-container {
+    padding-top: 5px;
+    padding-left: 120px;
+    background-color: #FFF; }
+
+/* END content tabs styles */

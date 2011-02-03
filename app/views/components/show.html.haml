@@ -18,28 +18,30 @@
     |
   %strong Submitter:
   = @component.submitter_name
+%p
+  %strong Description:  
 %p.box_description
-  %strong Description:
   = @component.description
   
-#tab-container.ui-tabs.ui-widget.ui-widget-content.ui-corner-all
-  %ul.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all
-    %li.ui-state-default.ui-corner-top.ui-tabs-selected.ui-state-active
+.tab-container
+  %ul
+    %li
       %a{ :href => "#config_fields" }
         Config Fields
-    %li.ui-state-default.ui-corner-top
+    %li
       %a{ :href => "#ports" }
         Ports
-    %li.ui-state-default.ui-corner-top
-      %a{ :href => "#other" }
-        Other
-  .ui-tabs-panel.ui-widget-content.ui-corner-bottom
+    %li
+      %a{ :href => "#q_and_a" }
+        Q & A
+    %br{ :style => "clear:both;" }
+  .panel-container
     #config_fields
       %h2 Heading
       %p content content content
     #ports
       %h2 Heading
       %p content content content
-    #other
+    #q_and_a
       %h2 Heading
       %p content content content 

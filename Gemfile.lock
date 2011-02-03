@@ -36,7 +36,7 @@ GEM
       ZenTest (>= 4.4.1)
     autotest-rails (4.1.0)
       ZenTest
-    awesome_print (0.3.1)
+    awesome_print (0.3.2)
     babosa (0.2.2)
     bcrypt-ruby (2.1.4)
     blockenspiel (0.4.1)

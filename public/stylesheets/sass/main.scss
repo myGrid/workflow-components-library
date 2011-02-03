@@ -546,3 +546,64 @@ form.sign_up_main {
 .box_currentuser_specific * {
   vertical-align: middle;
 }
+
+
+/* BEGIN content tabs styles */
+
+.tab-container {
+  background-color: #FFF;
+  border: solid 1px #CCC; 
+  height: 300px; 
+  
+  ul { 
+    height: 300px; 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+    background: $content-background-color; 
+    float: left; 
+    border-right: solid 1px #CCC; 
+    
+    li { 
+      width: 100px; 
+      margin: 0; 
+      padding: 0; 
+      text-align: center;
+      
+      a { 
+        display: block; 
+        padding: 15px 0; 
+        outline: none; 
+      }
+      
+      a:hover { 
+        text-decoration: underline; 
+      }
+      
+      a.selected-tab { 
+        font-weight: bold; 
+        text-decoration: none; 
+      }
+    }
+    
+    li.selected-tab { 
+      background: #fff; 
+      position: relative; 
+      left: 1px; 
+      border: 0 solid #CCC; 
+      border-width: 1px 0; 
+    }
+    
+    li:first-child.selected-tab { 
+      border-top: none; 
+    }
+  }
+  
+  .panel-container { 
+    padding-top: 5px; 
+    padding-left: 120px;
+    background-color: #FFF;
+  }
+}
+
+/* END content tabs styles */

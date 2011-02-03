@@ -16,5 +16,5 @@ stylesheets:
     - public/stylesheets/formtastic.css
     - public/stylesheets/awesome-buttons.css
     - public/stylesheets/flutie_mod.css
-    - public/css/ui-lightness/jquery-ui-1.8.9.custom.css
+    #- public/css/ui-lightness/jquery-ui-1.8.9.custom.css
     - public/stylesheets/main.css
