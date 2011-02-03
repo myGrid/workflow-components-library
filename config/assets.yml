@@ -5,7 +5,9 @@ javascripts:
     - public/javascripts/jquery.min.js
     - public/javascripts/jquery-ui.js
     - public/javascripts/rails.js
+    - public/javascripts/jquery.easytabs.js
     - public/javascripts/core.js
+    - public/javascripts/application.js
 
 stylesheets:
   main:
@@ -14,4 +16,5 @@ stylesheets:
     - public/stylesheets/formtastic.css
     - public/stylesheets/awesome-buttons.css
     - public/stylesheets/flutie_mod.css
+    - public/css/ui-lightness/jquery-ui-1.8.9.custom.css
     - public/stylesheets/main.css
