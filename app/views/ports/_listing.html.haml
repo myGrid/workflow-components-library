@@ -1,0 +1,18 @@
+.listing_item
+  %p.label
+    = port.name
+    %span.extra_text
+      (#{port.label})
+  %p.center
+    %strong Depth:
+    = port.depth
+    %span.separator_pipe
+      |
+    %strong Visible?
+    = port.visible
+  %p.desc
+    %strong Description:
+    = port.description
+  %p.buttons
+  = button "Edit", edit_port_path(@port), :size => :medium
+  = button "Delete", @port, :confirm => 'Are you sure?', :method => :delete, :size => :medium

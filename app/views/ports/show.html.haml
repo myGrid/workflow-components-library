@@ -1,0 +1,30 @@
+- title "Port"
+
+%p
+  %strong Component:
+  = @port.component_id
+%p
+  %strong Usage Type Cd:
+  = @port.usage_type_cd
+%p
+  %strong Name:
+  = @port.name
+%p
+  %strong Label:
+  = @port.label
+%p
+  %strong Description:
+  = @port.description
+%p
+  %strong Depth:
+  = @port.depth
+%p
+  %strong Visible:
+  = @port.visible
+
+%p
+  = link_to "Edit", edit_port_path(@port)
+  |
+  = link_to "Destroy", @port, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", ports_path

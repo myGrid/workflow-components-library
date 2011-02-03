@@ -11,6 +11,15 @@ class Ability
       can [ :update, :destroy ], Component do |c|
         c.try(:submitter) == user
       end
+      
+      can :create, Port do |p|
+        p.component.try(:submitter) == user
+      end
+      
+      can :create, Answer
+      can [ :update, :destroy ], Answer do |a|
+        a.try(:user) == user
+      end
     # elsif user.role? :writter
     #   can :manage, [Post, Asset]
     # elsif user.role? :memeber

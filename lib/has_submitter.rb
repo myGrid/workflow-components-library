@@ -9,6 +9,7 @@ module ActiveRecord
     module ClassMethods
       def has_submitter
         validates :submitter,
+                  :presence => true,
                   :existence => true
             
         belongs_to :submitter,

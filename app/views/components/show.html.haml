@@ -8,7 +8,7 @@
 %h3= @component.title
 %p.buttons
   = button "Edit", edit_component_path(@component), :size => :medium
-  = button "Destroy", @component, :confirm => 'Are you sure?', :method => :delete, :size => :medium
+  = button "Delete", @component, :confirm => 'Are you sure?', :method => :delete, :size => :medium
   = button "View All", components_path, :size => :medium
 %br
 %p.center
@@ -37,11 +37,39 @@
     %br{ :style => "clear:both;" }
   .panel-container
     #config_fields
-      %h2 Heading
-      %p content content content
+      %p Please answer the question in the Q & A tab. Thanks!
     #ports
-      %h2 Heading
-      %p content content content
+      %h2 Ports
+      %p
+        %strong Inputs
+        = render :partial => "ports/listing", :collection => @component.input_ports, :as => :port
+      %p
+        %strong Outputs
+        = render :partial => "ports/listing", :collection => @component.output_ports, :as => :port
+      %p.buttons
+        = button "New Input Port", new_port_path(:component_id => @component.id, :usage_type => :input), :size => :medium
+        = button "New Output Port", new_port_path(:component_id => @component.id, :usage_type => :output), :size => :medium
     #q_and_a
-      %h2 Heading
-      %p content content content 
+      %h2 Q & A
+      %p Below are some questions to help us gather as much information from you as quickly as animally possible. Thanks!
+      = Question.all.each do |q|
+        %h3 Question #{q.id}
+        %p.step_text.center{:style => "margin-top: 0"}
+          = q.value
+        - Answer.find_all_by_component_id_and_question_id(@component.id, q.id).each do |a|
+          .box_description
+            %p
+              %strong Answer:
+              (by #{a.user.name})
+            %blockquote
+              = simple_format(a.value)
+        %p
+          %strong Add an answer:
+        = semantic_form_for Answer.new do |f|
+          = f.inputs do
+            = f.input :component_id, :as => :hidden, :value => @component.id
+            = f.input :question_id, :as => :hidden, :value => q.id
+            = f.input :value, :label => "Your Answer"
+            = f.buttons do
+              = f.commit_button
+        %br

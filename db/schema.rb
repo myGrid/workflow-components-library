@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110126113319) do
+ActiveRecord::Schema.define(:version => 20110203093833) do
+
+  create_table "answers", :force => true do |t|
+    t.string   "component_id", :limit => 36, :null => false
+    t.integer  "question_id",                :null => false
+    t.text     "value",                      :null => false
+    t.integer  "user_id",                    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "components", :id => false, :force => true do |t|
     t.string   "uuid",                :limit => 36,       :null => false
@@ -131,6 +140,12 @@ ActiveRecord::Schema.define(:version => 20110126113319) do
 
   add_index "ports", ["component_id", "usage_type_cd"], :name => "index_ports_on_component_id_and_usage_type_cd"
   add_index "ports", ["component_id"], :name => "index_ports_on_component_id"
+
+  create_table "questions", :force => true do |t|
+    t.string   "value",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"

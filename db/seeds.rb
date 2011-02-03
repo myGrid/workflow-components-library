@@ -50,5 +50,12 @@ ActiveRecord::Base.transaction do
                              :discovery_url => taverna_discovery_url
     a3.id = 3
     a3.save!
+    
+    a4 = TavernaActivity.new :title => "Other (please mention in description)", 
+                             :type_ref => "http://ns.taverna.org.uk/2010/taverna/activities/other#Activity", 
+                             :description => "Other",
+                             :discovery_url => taverna_discovery_url
+    a4.id = 4
+    a4.save!
   end
 end

@@ -33,10 +33,10 @@ class TavernaActivity < ActiveRecord::Base
                   :discovery_url
   
   # Sunspot / Solr configuration
-  searchable do
-    string :type_ref, :stored => true
-    text :title, :default_boost => 5, :stored => true
-    text :description, :stored => true
-  end
+  # searchable do
+  #   string :type_ref, :stored => true
+  #   text :title, :default_boost => 5, :stored => true
+  #   text :description, :stored => true
+  # end
   
 end

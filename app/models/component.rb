@@ -33,9 +33,6 @@ class Component < ActiveRecord::Base
   
   include DatabaseValidation
   
-  validates :label,
-            :presence => true
-  
   validates :taverna_activity,
             :existence => true
             
@@ -65,11 +62,11 @@ class Component < ActiveRecord::Base
            :dependent => :destroy
   
   # Sunspot / Solr configuration
-  searchable do
-    text :label, :default_boost => 2
-    text :title, :default_boost => 2
-    text :description
-  end
+  # searchable do
+  #   text :label, :default_boost => 2
+  #   text :title, :default_boost => 2
+  #   text :description
+  # end
   
   def self.latest(limit=10)
     self.find(:all,

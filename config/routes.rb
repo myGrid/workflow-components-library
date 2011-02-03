@@ -1,4 +1,8 @@
 Wcl::Application.routes.draw do
+  resources :answers
+
+  resources :ports
+
   resources :components
 
   root :to => 'home#index'

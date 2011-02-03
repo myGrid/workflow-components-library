@@ -1,0 +1,25 @@
+- title "Ports"
+
+%table
+  %tr
+    %th Component
+    %th Usage type cd
+    %th Name
+    %th Label
+    %th Description
+    %th Depth
+    %th Visible
+  - for port in @ports
+    %tr
+      %td= port.component_id
+      %td= port.usage_type_cd
+      %td= port.name
+      %td= port.label
+      %td= port.description
+      %td= port.depth
+      %td= port.visible
+      %td= link_to 'Show', port
+      %td= link_to 'Edit', edit_port_path(port)
+      %td= link_to 'Destroy', port, :confirm => 'Are you sure?', :method => :delete
+
+%p= link_to "New Port", new_port_path(port)
