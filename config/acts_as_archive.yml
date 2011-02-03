@@ -1,3 +1,4 @@
+---
 Component:
   - class: Component::Archive
     table: archived_components

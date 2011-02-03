@@ -24,14 +24,32 @@ require 'spec_helper'
 
 describe Component do
   
-  it "should save and be found successfully" do
-    # Partly tests the UUID as ID functionality
+  context "when creating" do
     
-    component = Factory.build(:component)
-    expect { component.save! }.to_not raise_error
+    it "should save and be found successfully" do
+      # Partly tests the UUID as ID functionality
+      
+      component = Factory.build(:component)
+      expect { component.save! }.to_not raise_error
+      
+      component_again = Component.find(component.id)
+      component_again.should == component
+    end
     
-    component_again = Component.find(component.id)
-    component_again.should == component
+  end
+  
+  context "when deleting" do
+    
+    it "should delete and create an archived version successfully" do
+      component = Factory(:component)
+      component_id = component.id
+      expect { component.destroy }.to_not raise_error
+      
+      expect { Component.find(component_id) }.to raise_error
+      
+      expect { archived_component = Component::Archive.find(component_id) }.to_not raise_error
+    end
+    
   end
   
   describe "#version" do 
