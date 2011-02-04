@@ -1,6 +1,6 @@
 site:
   base_url: "http://localhost:3000/"
-  name: "Taverna Workflow Components Libary"
+  name: "Taverna Workflow Components Library"
   main_logo_image: "taverna-wheel-logo.png"
  
 default_page_size: 20

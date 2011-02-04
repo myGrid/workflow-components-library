@@ -4,7 +4,7 @@ class ComponentsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @components = Component.paginate :page => @page, :per_page => @per_page
+    @components = Component.paginate :page => @page, :per_page => @per_page, :order => "updated_at DESC"
   end
 
   def show

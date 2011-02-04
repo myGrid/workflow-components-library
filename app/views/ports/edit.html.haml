@@ -1,8 +1,6 @@
-- title "Edit Port"
+= title "Edit Port"
 
 = render 'form'
 
 %p
-  = link_to "Show", port
-  |
-  = link_to "View All", ports_path
+= button "Back to Component", component_url(@port.component, :anchor => "ports")

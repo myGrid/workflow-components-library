@@ -713,9 +713,9 @@ form.sign_up_main {
 .tab-container {
   background-color: #FFF;
   border: solid 1px #CCC;
-  height: 300px; }
+  height: 600px; }
   .tab-container ul {
-    height: 300px;
+    height: 600px;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -745,8 +745,7 @@ form.sign_up_main {
     .tab-container ul li:first-child.selected-tab {
       border-top: none; }
   .tab-container .panel-container {
-    padding-top: 5px;
-    padding-left: 120px;
+    padding: 1em 1.2em 0.7em 120px;
     background-color: #FFF; }
 
 /* END content tabs styles */

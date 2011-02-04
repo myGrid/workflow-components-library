@@ -7,12 +7,15 @@ class Ability
     if user.role? :admin
       can :manage, :all
     elsif user.role? :member
+      can :read, :all
+
       can :create, Component
       can [ :update, :destroy ], Component do |c|
         c.try(:submitter) == user
       end
       
-      can :create, Port do |p|
+      can :create, Port 
+      can [ :update, :destroy ], Port do |p|
         p.component.try(:submitter) == user
       end
       

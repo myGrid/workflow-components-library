@@ -20,8 +20,8 @@
   = @component.submitter_name
 %p
   %strong Description:  
-%p.box_description
-  = @component.description
+%div.box_description
+  = simple_format(@component.description)
   
 .tab-container
   %ul
@@ -33,26 +33,24 @@
         Ports
     %li
       %a{ :href => "#q_and_a" }
-        Q & A
+        Q &amp; A
     %br{ :style => "clear:both;" }
   .panel-container
     #config_fields
       %p Please answer the question in the Q & A tab. Thanks!
     #ports
       %h2 Ports
-      %p
-        %strong Inputs
-        = render :partial => "ports/listing", :collection => @component.input_ports, :as => :port
-      %p
-        %strong Outputs
-        = render :partial => "ports/listing", :collection => @component.output_ports, :as => :port
+      %h3 Inputs
+      = render :partial => "ports/listing", :collection => @component.input_ports, :as => :port
+      %h3 Outputs
+      = render :partial => "ports/listing", :collection => @component.output_ports, :as => :port
       %p.buttons
         = button "New Input Port", new_port_path(:component_id => @component.id, :usage_type => :input), :size => :medium
         = button "New Output Port", new_port_path(:component_id => @component.id, :usage_type => :output), :size => :medium
     #q_and_a
-      %h2 Q & A
-      %p Below are some questions to help us gather as much information from you as quickly as animally possible. Thanks!
-      = Question.all.each do |q|
+      %h2 Q &amp; A
+      %p.box_info_standout Below are some questions to help us gather as much information from you as quickly as animally possible. Thanks!
+      - Question.all.each do |q|
         %h3 Question #{q.id}
         %p.step_text.center{:style => "margin-top: 0"}
           = q.value
