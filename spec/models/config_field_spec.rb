@@ -35,11 +35,13 @@ describe ConfigField do
     
     it "should create a default ConfigFieldMapping object" do 
       field1 = Factory.create(:config_field)
-      field1.mapping.should_not be_nil
+      field1_again = ConfigField.find(field1.id)
+      field1_again.mapping.should_not be_nil
       
       field2 = Factory.build(:config_field)
       expect { field2.save! }.to_not raise_error
-      field2.mapping.should_not be_nil
+      field2_again = ConfigField.find(field2.id)
+      field2_again.mapping.should_not be_nil
     end
     
   end

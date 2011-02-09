@@ -28,11 +28,13 @@ describe Port do
     
     it "should create a default PortMapping object" do 
       port1 = Factory.create(:port)
-      port1.mapping.should_not be_nil
+      port1_again = Port.find(port1.id)
+      port1_again.mapping.should_not be_nil
       
       port2 = Factory.build(:port)
       expect { port2.save! }.to_not raise_error
-      port2.mapping.should_not be_nil
+      port2_again = Port.find(port2.id)
+      port2_again.mapping.should_not be_nil
     end
     
   end

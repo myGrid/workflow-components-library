@@ -28,6 +28,8 @@ class Port < ActiveRecord::Base
   
   default_value_for :depth, 0
   
+  default_scope :include => :mapping
+  
   include DatabaseValidation
   
   validates_as_enum :usage_type
@@ -51,8 +53,20 @@ class Port < ActiveRecord::Base
            :dependent => :destroy
   
   has_one :mapping,
-          :class_name => 'PortMapping'
+          :class_name => 'PortMapping',
+          :dependent => :destroy,
+          :autosave => true
   
-  before_create :build_mapping
+  before_create :ensure_mapping
+  
+  protected
+  
+  def ensure_mapping
+    if mapping
+      return true
+    else
+      build_mapping
+    end
+  end
   
 end

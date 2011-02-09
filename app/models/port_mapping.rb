@@ -17,6 +17,10 @@
 
 class PortMapping < ActiveRecord::Base
   
+  default_value_for :to_processor_port, true
+  
+  # TODO: implement a validation that checks for the correct state of the to_* fields + the values of the required property
+  
   include DatabaseValidation
   
   # TODO: validates :processor_port_ref,

@@ -75,11 +75,12 @@ describe Component do
       component = Factory(:dna_to_rna_component)
       
       input_port = Factory(:dna_to_rna_input_port, :component => component)
+      input_port.mapping = Factory.build(:dna_to_rna_input_port_mapping)
       Factory(:dna_to_rna_input_port_example_value, :port => input_port)
-      Factory(:dna_to_rna_input_port_mapping, :port => input_port)
+      
       
       config_field = Factory(:dna_to_rna_config_field, :component => component)
-      Factory(:dna_to_rna_config_field_mapping, :config_field => config_field)
+      config_field.mapping = Factory.build(:dna_to_rna_config_field_mapping)
      
       component.to_hash.should == Test::Data::Components::DNA_TO_RNA 
     end

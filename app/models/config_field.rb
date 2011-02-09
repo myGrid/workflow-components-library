@@ -41,6 +41,8 @@ class ConfigField < ActiveRecord::Base
             :complex => 6 },
           :upcase => true
   
+  default_scope :include => :mapping
+  
   include DatabaseValidation
   
   validates_as_enum :field_type
@@ -70,8 +72,19 @@ class ConfigField < ActiveRecord::Base
   belongs_to :component
   
   has_one :mapping,
-          :class_name => 'ConfigFieldMapping'
+          :class_name => 'ConfigFieldMapping',
+          :dependent => :destroy,
+          :autosave => true
   
-  before_create :build_mapping
+  before_create :ensure_mapping
   
+  protected
+  
+  def ensure_mapping
+    if mapping
+      return true
+    else
+      build_mapping
+    end
+  end
 end
