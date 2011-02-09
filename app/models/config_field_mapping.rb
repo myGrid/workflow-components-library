@@ -30,6 +30,7 @@ class ConfigFieldMapping < ActiveRecord::Base
   #          :url => { :allow_blank => true }
   
   attr_accessible :config_field_id,
+                  :config_field,
                   :to_activity_config_property,
                   :activity_config_property_ref,
                   :to_component_port,

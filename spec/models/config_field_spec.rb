@@ -30,5 +30,18 @@
 require 'spec_helper'
 
 describe ConfigField do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  context "when creating or saving" do
+    
+    it "should create a default ConfigFieldMapping object" do 
+      field1 = Factory.create(:config_field)
+      field1.mapping.should_not be_nil
+      
+      field2 = Factory.build(:config_field)
+      expect { field2.save! }.to_not raise_error
+      field2.mapping.should_not be_nil
+    end
+    
+  end
+
 end

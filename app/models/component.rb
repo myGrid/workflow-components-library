@@ -74,7 +74,12 @@ class Component < ActiveRecord::Base
               :limit => limit)
   end
   
+  def to_json
+  	self.to_hash.to_json
+  end
+  
   # FIXME: change all keys to symbols (for a slight perf improvement)
+  # TODO: possibly refactor this to be more object-oriented
   def to_hash
     result = { 
       'id' => Wcl::Api.uri_for_object(self),

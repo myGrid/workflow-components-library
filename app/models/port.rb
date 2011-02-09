@@ -25,7 +25,9 @@ class Port < ActiveRecord::Base
   # TODO: check uniqueness of port name within scope of ports and port type of a component
   
   as_enum :usage_type, [ :input, :output ], :upcase => true
-
+  
+  default_value_for :depth, 0
+  
   include DatabaseValidation
   
   validates_as_enum :usage_type
@@ -50,5 +52,7 @@ class Port < ActiveRecord::Base
   
   has_one :mapping,
           :class_name => 'PortMapping'
+  
+  before_create :build_mapping
   
 end

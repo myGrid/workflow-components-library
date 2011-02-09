@@ -23,5 +23,18 @@
 require 'spec_helper'
 
 describe Port do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  context "when creating or saving" do
+    
+    it "should create a default PortMapping object" do 
+      port1 = Factory.create(:port)
+      port1.mapping.should_not be_nil
+      
+      port2 = Factory.build(:port)
+      expect { port2.save! }.to_not raise_error
+      port2.mapping.should_not be_nil
+    end
+    
+  end
+  
 end

@@ -26,6 +26,7 @@ class PortMapping < ActiveRecord::Base
             :existence => true
   
   attr_accessible :port_id,
+                  :port,
                   :to_processor_port,
                   :processor_port_ref
   

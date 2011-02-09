@@ -72,4 +72,6 @@ class ConfigField < ActiveRecord::Base
   has_one :mapping,
           :class_name => 'ConfigFieldMapping'
   
+  before_create :build_mapping
+  
 end
