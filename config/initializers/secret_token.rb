@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Wcl::Application.config.secret_token = 'c0e740765b26e8bb4cd5b379b76069241fca3d863366c87358680599e77e77060e5e6174de215d3e87a936aedfd927a0f96e987ab1da9af6005975b590a1c9e9'
+Wcl::Application.config.secret_token = 'ac88470f692a201f5a9861041ccf9460f4272423ee5b95a6d9abf3dc023637e02547c94d33315ffe2198515a19668b6142d3b9b6d5e872528d3bc4eb97e1f171'

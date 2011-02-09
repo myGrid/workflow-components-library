@@ -3,7 +3,7 @@ embed_assets: on
 javascripts:
   common:
     - public/javascripts/jquery.min.js
-    - public/javascripts/jquery-ui.js
+    - public/javascripts/jquery-ui.min.js
     - public/javascripts/rails.js
     - public/javascripts/jquery.easytabs.js
     - public/javascripts/core.js
