@@ -1,7 +1,7 @@
 Wcl::Application.routes.draw do
   resources :answers
 
-  resources :ports
+  resources :ports, :except => :index
 
   resources :components
 

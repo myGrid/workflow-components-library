@@ -3,10 +3,6 @@ class PortsController < ApplicationController
   
   load_and_authorize_resource
   
-  def index
-    @ports = Port.all
-  end
-
   def show
     @port = Port.find(params[:id])
   end
