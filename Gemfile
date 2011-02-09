@@ -24,7 +24,6 @@ gem "database_validation", ">= 0.0.5"
 gem "sanitize"
 gem "version_info"
 gem "wirble"
-gem "awesome_print"
 gem "rails_config"
 gem 'sunspot_rails', '~> 1.2'
 #gem 'acts_as_archive', '>= 0.4'
@@ -32,6 +31,7 @@ gem 'yaml_db', '>= 0.2'
 # gem 'jquery_ui_rails_helpers'             Doesn't currently work with Rails 3!
 # gem 'jquelpers'                           Doesn't currently work with Rails 3!
 
+gem "awesome_print", :group => [:test, :development]
 gem "flutie", "~> 1.1", :group => :development
 gem 'jquery-rails', '>= 0.2.6', :group => :development
 gem "annotate", :group => :development
