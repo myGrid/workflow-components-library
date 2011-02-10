@@ -82,79 +82,79 @@ class Component < ActiveRecord::Base
   # TODO: possibly refactor this to be more object-oriented
   def to_hash
     result = { 
-      'id' => Wcl::Api.uri_for_object(self),
-      'version' => self.version,
-      'label' => self.label,
-      'title' => self.title,
-      'description' => self.description,
-      'alternative_labels' => [ "DNA 2 RNA", "DNA2RNA" ],   # FIXME: stubbed
-      'taverna_activity' => {
-        'type' => self.taverna_activity.type_ref,
-        'discovery_url' => self.taverna_activity.discovery_url
+      :id => Wcl::Api.uri_for_object(self),
+      :version => self.version,
+      :label => self.label,
+      :title => self.title,
+      :description => self.description,
+      :alternative_labels => [ "DNA 2 RNA", "DNA2RNA" ],   # FIXME: stubbed
+      :taverna_activity => {
+        :type => self.taverna_activity.type_ref,
+        :discovery_url => self.taverna_activity.discovery_url
       },
-      'creator' => {
-        'resource' => Wcl::Api.uri_for_object(self.submitter),
-        'name' => self.submitter_name,
-        'homepage' => self.submitter.try(:homepage)
+      :creator => {
+        :resource => Wcl::Api.uri_for_object(self.submitter),
+        :name => self.submitter_name,
+        :homepage => self.submitter.try(:homepage)
       },
-      'publisher' => {   # FIXME: stubbed
-        'resource' => 'http://components.taverna.org.uk',
-        'title' => 'myGrid Workflow Components Library'
+      :publisher => {
+        :resource => Settings.site.base_url,
+        :title => Settings.site.name
       },
-      "source" => { },   # FIXME: stubbed
-      "credits" => [ ],   # FIXME: stubbed
-      "attributions" => [ ],   # FIXME: stubbed
-      "created" => self.created_at.iso8601,
-      "modified" => self.updated_at.iso8601,
-      "family" => { },   # FIXME: stubbed
-      "groups" => [   # FIXME: stubbed
+      :source => { },   # FIXME: stubbed
+      :credits => [ ],   # FIXME: stubbed
+      :attributions => [ ],   # FIXME: stubbed
+      :created => self.created_at.iso8601,
+      :modified => self.updated_at.iso8601,
+      :family => { },   # FIXME: stubbed
+      :groups => [   # FIXME: stubbed
         "/Sequencing",
         "/Convertors/Sequencing",
         "/Convertors/DNA"
       ],
-      "icons" => {   # FIXME: stubbed
-        "main" => "platform:/plugin/uk.org.taverna.t3.workbench.ui/icons/famfamfam_silk/database_go.png"
+      :icons => {   # FIXME: stubbed
+        :main => "platform:/plugin/uk.org.taverna.t3.workbench.ui/icons/famfamfam_silk/database_go.png"
       },
-      "docs" => [ ],   # FIXME: stubbed
-      "tags" => [   # FIXME: stubbed
+      :docs => [ ],   # FIXME: stubbed
+      :tags => [   # FIXME: stubbed
         "DNA",
         "RNA",
         "Convertor",
         "Sequence",
         "Transformation"
       ],
-      "related" => [ ],   # FIXME: stubbed
-      "ports" => {
-        "inputs" => to_hash_for_ports(self.input_ports, :input),
-        "outputs" => [
+      :related => [ ],   # FIXME: stubbed
+      :ports => {
+        :inputs => to_hash_for_ports(self.input_ports, :input),
+        :outputs => [    # FIXME: stubbed
           {
-            "relative_id" => "ports/outputs/rna_seq",
-            "name" => "rna_seq",
-            "label" => "RNA Sequence",
-            "description" => "The resulting RNA sequence",
-            "depth" => 0,
-            "visible" => true,
-            "data_types" => [
+            :relative_id => "ports/outputs/rna_seq",
+            :name => "rna_seq",
+            :label => "RNA Sequence",
+            :description => "The resulting RNA sequence",
+            :depth => 0,
+            :visible => true,
+            :data_types => [
               "http://www.mygrid.org.uk/ontology#RNA_structure"
             ],
-            "examples" => [ ],
-            "tags" => [
+            :examples => [ ],
+            :tags => [
               "RNA",
               "Sequence"
             ],
-            "mapping" => {
-              "to_processor_port" => true,
-              "processor_port" => {
-                "name" => "rna_seq"
+            :mapping => {
+              :to_processor_port => true,
+              :processor_port => {
+                :name => "rna_seq"
               }
             }
           }
         ]
       },
-      "configuration" => {
-        "fields" => to_hash_for_config_fields(self.config_fields)
+      :configuration => {
+        :fields => to_hash_for_config_fields(self.config_fields)
       },
-      "helpers" => [ ]   # FIXME: stubbed
+      :helpers => [ ]   # FIXME: stubbed
     }
     
     return result
@@ -167,24 +167,24 @@ class Component < ActiveRecord::Base
     
     ports.each do |port|
       result << {
-        "relative_id" => "ports/#{usage_type.to_s.pluralize}/#{port.name}",
-        "name" => port.name,
-        "label" => port.label,
-        "description" => port.description,
-        "depth" => port.depth,
-        "visible" => port.visible,
-        "data_types" => [   # FIXME: stubbed
+        :relative_id => "ports/#{usage_type.to_s.pluralize}/#{port.name}",
+        :name => port.name,
+        :label => port.label,
+        :description => port.description,
+        :depth => port.depth,
+        :visible => port.visible,
+        :data_types => [   # FIXME: stubbed
           "http://www.mygrid.org.uk/ontology#DNA_sequence"
         ],
-        "examples" => to_hash_for_example_values(port.example_values),
-        "tags" => [   # FIXME: stubbed
+        :examples => to_hash_for_example_values(port.example_values),
+        :tags => [   # FIXME: stubbed
           "DNA",
           "Sequence"
         ],
-        "mapping" => {
-          "to_processor_port" => port.mapping.to_processor_port,
-          "processor_port" => {
-            "name" => port.mapping.processor_port_ref
+        :mapping => {
+          :to_processor_port => port.mapping.to_processor_port,
+          :processor_port => {
+            :name => port.mapping.processor_port_ref
           }
         }
       }
@@ -198,8 +198,8 @@ class Component < ActiveRecord::Base
     
     example_values.each do |example|
       result << {
-        "data_type" => example.data_type,
-        "value" => example.value        
+        :data_type => example.data_type,
+        :value => example.value        
       }
     end
     
@@ -211,37 +211,37 @@ class Component < ActiveRecord::Base
     
     config_fields.each do |field|
       result << {
-        "relative_id" => "configuration/fields/#{field.name}",
-        "name" => field.name,
-        "label" => field.label,
-        "field_type" => field.field_type.to_s.upcase,
-        "data_type" => field.data_type,
-        "description" => field.description,
-        "config_group" => field.config_group,
-        "required" => field.required,
-        "default_value" => field.default_value,
-        "fixed" => field.fixed,
-        "hidden" => field.hidden,
-        "multiple" => field.multiple,
-        "constrained_to_options" => field.constrained_to_options,
-        "options" => [ ],   # FIXME: stubbed
-        "additional_constraints" => field.additional_constraints,
-        "examples" => [ ],    # FIXME: stubbed
-        "mapping" => {
-          "to_activity_configuration_property" => field.mapping.to_activity_config_property,
-          "activity_configuration_property" => {
-            "name" => field.mapping.activity_config_property_ref
+        :relative_id => "configuration/fields/#{field.name}",
+        :name => field.name,
+        :label => field.label,
+        :field_type => field.field_type.to_s.upcase,
+        :data_type => field.data_type,
+        :description => field.description,
+        :config_group => field.config_group,
+        :required => field.required,
+        :default_value => field.default_value,
+        :fixed => field.fixed,
+        :hidden => field.hidden,
+        :multiple => field.multiple,
+        :constrained_to_options => field.constrained_to_options,
+        :options => [ ],   # FIXME: stubbed
+        :additional_constraints => field.additional_constraints,
+        :examples => [ ],    # FIXME: stubbed
+        :mapping => {
+          :to_activity_configuration_property => field.mapping.to_activity_config_property,
+          :activity_configuration_property => {
+            :name => field.mapping.activity_config_property_ref
           },
-          "to_component_port" => field.mapping.to_component_port,
-          "component_port" => { 
-            "resource" => nil   # FIXME: stubbed
+          :to_component_port => field.mapping.to_component_port,
+          :component_port => { 
+            :resource => nil  # FIXME: stubbed
           },
-          "to_processor_port" => field.mapping.to_processor_port,
-          "processor_port" => {
-            "name" => field.mapping.processor_port_ref
+          :to_processor_port => field.mapping.to_processor_port,
+          :processor_port => {
+            :name => field.mapping.processor_port_ref
           }
         },
-        "make_input_port" => field.make_input_port
+        :make_input_port => field.make_input_port
       }
     end
     
