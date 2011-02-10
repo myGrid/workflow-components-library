@@ -26,5 +26,8 @@ class Helper < ActiveRecord::Base
                   :label,
                   :title,
                   :description
+  def to_hash
+    # FIXME: stubbed
+  end
   
 end

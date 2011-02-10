@@ -28,4 +28,10 @@ class ExampleValue < ActiveRecord::Base
       
   belongs_to :port
   
+  def to_hash
+    {
+      :data_type => self.data_type,
+      :value => self.value        
+    }
+  end
 end

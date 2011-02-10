@@ -78,6 +78,42 @@ class ConfigField < ActiveRecord::Base
   
   before_create :ensure_mapping
   
+  def to_hash
+    {
+      :relative_id => "configuration/fields/#{self.name}",
+      :name => self.name,
+      :label => self.label,
+      :field_type => self.field_type.to_s.upcase,
+      :data_type => self.data_type,
+      :description => self.description,
+      :config_group => self.config_group,
+      :required => self.required,
+      :default_value => self.default_value,
+      :fixed => self.fixed,
+      :hidden => self.hidden,
+      :multiple => self.multiple,
+      :constrained_to_options => self.constrained_to_options,
+      :options => [ ],   # FIXME: stubbed
+      :additional_constraints => self.additional_constraints,
+      :examples => [ ],    # FIXME: stubbed
+      :mapping => {
+        :to_activity_configuration_property => self.mapping.to_activity_config_property,
+        :activity_configuration_property => {
+          :name => self.mapping.activity_config_property_ref
+        },
+        :to_component_port => self.mapping.to_component_port,
+        :component_port => { 
+          :resource => nil  # FIXME: stubbed
+        },
+        :to_processor_port => self.mapping.to_processor_port,
+        :processor_port => {
+          :name => self.mapping.processor_port_ref
+        }
+      },
+      :make_input_port => self.make_input_port
+    }
+  end
+  
   protected
   
   def ensure_mapping
@@ -87,4 +123,5 @@ class ConfigField < ActiveRecord::Base
       build_mapping
     end
   end
+  
 end

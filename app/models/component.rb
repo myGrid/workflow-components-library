@@ -48,6 +48,8 @@ class Component < ActiveRecord::Base
 
   belongs_to :taverna_activity
   
+  has_many :ports     # Should NOT usually use this association directly!
+  
   has_many :input_ports,
            :class_name => "Port",
            :conditions => { :usage_type_cd => Port.usage_types.input },
@@ -60,6 +62,9 @@ class Component < ActiveRecord::Base
   
   has_many :config_fields,
            :dependent => :destroy
+           
+  has_many :helpers,
+           :through => :ports
   
   # Sunspot / Solr configuration
   # searchable do
@@ -78,8 +83,6 @@ class Component < ActiveRecord::Base
   	self.to_hash.to_json
   end
   
-  # FIXME: change all keys to symbols (for a slight perf improvement)
-  # TODO: possibly refactor this to be more object-oriented
   def to_hash
     result = { 
       :id => Wcl::Api.uri_for_object(self),
@@ -125,7 +128,7 @@ class Component < ActiveRecord::Base
       ],
       :related => [ ],   # FIXME: stubbed
       :ports => {
-        :inputs => to_hash_for_ports(self.input_ports, :input),
+        :inputs => self.input_ports.map { |p| p.to_hash },
         :outputs => [    # FIXME: stubbed
           {
             :relative_id => "ports/outputs/rna_seq",
@@ -152,98 +155,10 @@ class Component < ActiveRecord::Base
         ]
       },
       :configuration => {
-        :fields => to_hash_for_config_fields(self.config_fields)
+        :fields => self.config_fields.map { |f| f.to_hash }
       },
-      :helpers => [ ]   # FIXME: stubbed
+      :helpers => self.helpers.map { |h| h.to_hash }
     }
-    
-    return result
-  end
-  
-  protected
-  
-  def to_hash_for_ports(ports, usage_type)
-    result = [ ]
-    
-    ports.each do |port|
-      result << {
-        :relative_id => "ports/#{usage_type.to_s.pluralize}/#{port.name}",
-        :name => port.name,
-        :label => port.label,
-        :description => port.description,
-        :depth => port.depth,
-        :visible => port.visible,
-        :data_types => [   # FIXME: stubbed
-          "http://www.mygrid.org.uk/ontology#DNA_sequence"
-        ],
-        :examples => to_hash_for_example_values(port.example_values),
-        :tags => [   # FIXME: stubbed
-          "DNA",
-          "Sequence"
-        ],
-        :mapping => {
-          :to_processor_port => port.mapping.to_processor_port,
-          :processor_port => {
-            :name => port.mapping.processor_port_ref
-          }
-        }
-      }
-    end
-    
-    return result
-  end
-  
-  def to_hash_for_example_values(example_values)
-    result = [ ]
-    
-    example_values.each do |example|
-      result << {
-        :data_type => example.data_type,
-        :value => example.value        
-      }
-    end
-    
-    return result
-  end
-  
-  def to_hash_for_config_fields(config_fields)
-    result = [ ]
-    
-    config_fields.each do |field|
-      result << {
-        :relative_id => "configuration/fields/#{field.name}",
-        :name => field.name,
-        :label => field.label,
-        :field_type => field.field_type.to_s.upcase,
-        :data_type => field.data_type,
-        :description => field.description,
-        :config_group => field.config_group,
-        :required => field.required,
-        :default_value => field.default_value,
-        :fixed => field.fixed,
-        :hidden => field.hidden,
-        :multiple => field.multiple,
-        :constrained_to_options => field.constrained_to_options,
-        :options => [ ],   # FIXME: stubbed
-        :additional_constraints => field.additional_constraints,
-        :examples => [ ],    # FIXME: stubbed
-        :mapping => {
-          :to_activity_configuration_property => field.mapping.to_activity_config_property,
-          :activity_configuration_property => {
-            :name => field.mapping.activity_config_property_ref
-          },
-          :to_component_port => field.mapping.to_component_port,
-          :component_port => { 
-            :resource => nil  # FIXME: stubbed
-          },
-          :to_processor_port => field.mapping.to_processor_port,
-          :processor_port => {
-            :name => field.mapping.processor_port_ref
-          }
-        },
-        :make_input_port => field.make_input_port
-      }
-    end
     
     return result
   end
