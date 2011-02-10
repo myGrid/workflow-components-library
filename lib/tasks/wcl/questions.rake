@@ -1,8 +1,8 @@
 namespace :wcl do
   namespace :questions do
+    
     desc "Loads up a default set of questions to use"
     task :load => :environment do
-      
       Question.transaction do
         Question.all.each do |q|
           q.destroy
@@ -30,7 +30,7 @@ namespace :wcl do
           q.save!
         end
       end
-         
     end
+    
   end
 end
