@@ -1,5 +1,5 @@
 site:
-  base_url: "http://localhost:3000/"
+  base_url: "http://localhost:3000"
   name: "myGrid Workflow Components Library"
   main_logo_image: "taverna-wheel-logo.png"
  
