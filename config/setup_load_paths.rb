@@ -1,5 +1,5 @@
 begin
-  rvm_lib_path = File.expand_path("/home/jits/.rvm/lib")
+  rvm_lib_path = File.expand_path("/usr/local/rvm/lib")
   $LOAD_PATH.unshift rvm_lib_path
   require 'rvm'
   RVM.use_from_path! File.dirname(File.dirname(__FILE__))
