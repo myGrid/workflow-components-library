@@ -4,7 +4,7 @@ class ComponentsController < ApplicationController
   load_and_authorize_resource
   
   def index
-    @components = Component.paginate :page => @page, :per_page => @per_page, :order => "updated_at DESC"
+    @components = @components.paginate :page => @page, :per_page => @per_page, :order => "updated_at DESC"
   end
 
   def show
@@ -15,11 +15,9 @@ class ComponentsController < ApplicationController
   end
 
   def new
-    @component = Component.new
   end
 
   def create
-    @component = Component.new(params[:component])
     @component.submitter = current_user
     if @component.save
       flash[:notice] = "Successfully created component."
