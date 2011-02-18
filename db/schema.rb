@@ -22,14 +22,14 @@ ActiveRecord::Schema.define(:version => 20110203093833) do
   end
 
   create_table "components", :id => false, :force => true do |t|
-    t.string   "uuid",                :limit => 36,         :null => false
-    t.string   "version",             :limit => 20,         :null => false
-    t.string   "label",                                     :null => false
-    t.string   "title",                                     :null => false
-    t.integer  "taverna_activity_id",                       :null => false
-    t.integer  "submitter_id",                              :null => false
-    t.string   "submitter_type",                            :null => false
-    t.text     "description",         :limit => 2147483647
+    t.string   "uuid",                :limit => 36,       :null => false
+    t.string   "version",             :limit => 20,       :null => false
+    t.string   "label",                                   :null => false
+    t.string   "title",                                   :null => false
+    t.integer  "taverna_activity_id",                     :null => false
+    t.integer  "submitter_id",                            :null => false
+    t.string   "submitter_type",                          :null => false
+    t.text     "description",         :limit => 16777215
     t.integer  "family_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -62,21 +62,21 @@ ActiveRecord::Schema.define(:version => 20110203093833) do
   add_index "config_field_options", ["config_field_id"], :name => "index_config_field_options_on_config_field_id"
 
   create_table "config_fields", :force => true do |t|
-    t.string   "component_id",           :limit => 36,                            :null => false
-    t.string   "name",                                                            :null => false
-    t.string   "label",                                                           :null => false
-    t.text     "description",            :limit => 2147483647
-    t.integer  "field_type_cd",          :limit => 1,                             :null => false
-    t.string   "data_type",                                                       :null => false
+    t.string   "component_id",           :limit => 36,                          :null => false
+    t.string   "name",                                                          :null => false
+    t.string   "label",                                                         :null => false
+    t.text     "description",            :limit => 16777215
+    t.integer  "field_type_cd",          :limit => 1,                           :null => false
+    t.string   "data_type",                                                     :null => false
     t.string   "config_group"
-    t.boolean  "required",                                     :default => true
+    t.boolean  "required",                                   :default => true
     t.text     "default_value"
-    t.boolean  "fixed",                                        :default => false
-    t.boolean  "hidden",                                       :default => false
-    t.boolean  "multiple",                                     :default => false
-    t.boolean  "constrained_to_options",                       :default => false
+    t.boolean  "fixed",                                      :default => false
+    t.boolean  "hidden",                                     :default => false
+    t.boolean  "multiple",                                   :default => false
+    t.boolean  "constrained_to_options",                     :default => false
     t.text     "additional_constraints"
-    t.boolean  "make_input_port",                              :default => false
+    t.boolean  "make_input_port",                            :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -94,10 +94,10 @@ ActiveRecord::Schema.define(:version => 20110203093833) do
   add_index "example_values", ["port_id"], :name => "index_example_values_on_port_id"
 
   create_table "external_resources", :force => true do |t|
-    t.string   "resource_ref",                        :null => false
-    t.string   "type_ref",                            :null => false
-    t.string   "title",                               :null => false
-    t.text     "description",   :limit => 2147483647
+    t.string   "resource_ref",                      :null => false
+    t.string   "type_ref",                          :null => false
+    t.string   "title",                             :null => false
+    t.text     "description",   :limit => 16777215
     t.string   "discovery_url"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -106,10 +106,10 @@ ActiveRecord::Schema.define(:version => 20110203093833) do
   add_index "external_resources", ["resource_ref"], :name => "index_external_resources_on_resource_ref", :unique => true
 
   create_table "helpers", :force => true do |t|
-    t.integer  "port_id",                           :null => false
-    t.string   "label",                             :null => false
-    t.string   "title",                             :null => false
-    t.text     "description", :limit => 2147483647
+    t.integer  "port_id",                         :null => false
+    t.string   "label",                           :null => false
+    t.string   "title",                           :null => false
+    t.text     "description", :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -127,13 +127,13 @@ ActiveRecord::Schema.define(:version => 20110203093833) do
   add_index "port_mappings", ["port_id"], :name => "index_port_mappings_on_port_id"
 
   create_table "ports", :force => true do |t|
-    t.string   "component_id",  :limit => 36,                           :null => false
-    t.integer  "usage_type_cd", :limit => 1,                            :null => false
-    t.string   "name",                                                  :null => false
-    t.string   "label",                                                 :null => false
-    t.text     "description",   :limit => 2147483647
+    t.string   "component_id",  :limit => 36,                         :null => false
+    t.integer  "usage_type_cd", :limit => 1,                          :null => false
+    t.string   "name",                                                :null => false
+    t.string   "label",                                               :null => false
+    t.text     "description",   :limit => 16777215
     t.integer  "depth"
-    t.boolean  "visible",                             :default => true
+    t.boolean  "visible",                           :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -171,10 +171,10 @@ ActiveRecord::Schema.define(:version => 20110203093833) do
   add_index "slugs", ["sluggable_id"], :name => "index_slugs_on_sluggable_id"
 
   create_table "taverna_activities", :force => true do |t|
-    t.string   "type_ref",                            :null => false
-    t.string   "title",                               :null => false
-    t.text     "description",   :limit => 2147483647
-    t.string   "discovery_url",                       :null => false
+    t.string   "type_ref",                          :null => false
+    t.string   "title",                             :null => false
+    t.text     "description",   :limit => 16777215
+    t.string   "discovery_url",                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
