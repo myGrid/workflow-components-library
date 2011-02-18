@@ -24,19 +24,19 @@ module Wcl
     
     # For info/debug messages
     def self.say(msg)
-      puts msg
+      puts "INFO: #{msg}"
       Rails.logger.info msg
     end
     
     # For warning messages
     def self.warn(msg)
-      puts msg
+      puts "WARNING: #{msg}"
       Rails.logger.warn msg
     end
     
     # For error messages
     def self.yell(msg)
-      puts msg
+      puts "ERROR: #{msg}"
       Rails.logger.error msg
     end
     

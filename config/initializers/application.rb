@@ -20,7 +20,7 @@ if File.exist? customised_settings_path
   Settings.add_source! customised_settings_path 
   Settings.reload!
 else
-  Wcl::Util.warn "No custom settings file at '#{customised_settings_path}' so using defaults only"
+  Wcl::Util.warn "No custom settings file at #{customised_settings_path} so using defaults only"
 end
 
 # ===========
