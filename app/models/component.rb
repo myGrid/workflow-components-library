@@ -79,8 +79,23 @@ class Component < ActiveRecord::Base
               :limit => limit)
   end
   
-  def to_json
-  	self.to_hash.to_json
+  def published?
+    !published_at.blank?
+  end
+  
+  def publish!
+    unless published?
+      self['published_at'] = Time.now
+      version_bump(:major)
+      save!
+    end
+  end
+  
+  def unpublish!
+    if published?
+      self['published_at'] = nil
+      save!
+    end
   end
   
   def to_hash
@@ -161,6 +176,10 @@ class Component < ActiveRecord::Base
     }
     
     return result
+  end
+  
+  def to_json
+    self.to_hash.to_json
   end
   
 end

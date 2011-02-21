@@ -53,6 +53,22 @@ describe Component do
     
   end
   
+  context "when publishing" do 
+    
+    it "should set published status and version correctly" do 
+      component = Factory(:component)
+      component.should_not be_published
+      
+      component.publish! 
+      component.should be_published
+      component.version.should == "1.0.0"
+      
+      component.unpublish!
+      component.should_not be_published
+    end
+    
+  end
+  
   describe "#version" do 
     it "should only be updated in the appropriate way(s)" do
       component = Factory(:component)

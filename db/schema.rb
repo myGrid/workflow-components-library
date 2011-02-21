@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110203093833) do
+ActiveRecord::Schema.define(:version => 20110221153847) do
 
   create_table "answers", :force => true do |t|
     t.string   "component_id", :limit => 36, :null => false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20110203093833) do
     t.integer  "family_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "published_at"
   end
 
   add_index "components", ["uuid"], :name => "index_components_on_uuid"
