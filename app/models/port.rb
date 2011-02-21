@@ -63,24 +63,24 @@ class Port < ActiveRecord::Base
   
   def to_hash
     {
-      :relative_id => "ports/#{self.usage_type.to_s.pluralize}/#{self.name}",
-      :name => self.name,
-      :label => self.label,
-      :description => self.description,
-      :depth => self.depth,
-      :visible => self.visible,
+      :relative_id => "ports/#{usage_type.to_s.pluralize}/#{name}",
+      :name => name,
+      :label => label,
+      :description => description,
+      :depth => depth,
+      :visible => visible,
       :data_types => [   # FIXME: stubbed
         "http://www.mygrid.org.uk/ontology#DNA_sequence"
       ],
-      :examples => self.example_values.map { |e| e.to_hash },
+      :examples => example_values.map { |e| e.to_hash },
       :tags => [   # FIXME: stubbed
         "DNA",
         "Sequence"
       ],
       :mapping => {
-        :to_processor_port => self.mapping.to_processor_port,
+        :to_processor_port => mapping.to_processor_port,
         :processor_port => {
-          :name => self.mapping.processor_port_ref
+          :name => mapping.processor_port_ref
         }
       }
     }

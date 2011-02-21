@@ -74,9 +74,9 @@ class Component < ActiveRecord::Base
   # end
   
   def self.latest(limit=10)
-    self.find(:all,
-              :order => "created_at DESC",
-              :limit => limit)
+    find(:all,
+         :order => "created_at DESC",
+         :limit => limit)
   end
   
   def published?
@@ -101,19 +101,19 @@ class Component < ActiveRecord::Base
   def to_hash
     result = { 
       :id => Wcl::Api.uri_for_object(self),
-      :version => self.version,
-      :label => self.label,
-      :title => self.title,
-      :description => self.description,
+      :version => version,
+      :label => label,
+      :title => title,
+      :description => description,
       :alternative_labels => [ "DNA 2 RNA", "DNA2RNA" ],   # FIXME: stubbed
       :taverna_activity => {
-        :type => self.taverna_activity.type_ref,
-        :discovery_url => self.taverna_activity.discovery_url
+        :type => taverna_activity.type_ref,
+        :discovery_url => taverna_activity.discovery_url
       },
       :creator => {
-        :resource => Wcl::Api.uri_for_object(self.submitter),
-        :name => self.submitter_name,
-        :homepage => self.submitter.try(:homepage)
+        :resource => Wcl::Api.uri_for_object(submitter),
+        :name => submitter_name,
+        :homepage => submitter.try(:homepage)
       },
       :publisher => {
         :resource => Settings.site.base_url,
@@ -122,8 +122,8 @@ class Component < ActiveRecord::Base
       :source => { },   # FIXME: stubbed
       :credits => [ ],   # FIXME: stubbed
       :attributions => [ ],   # FIXME: stubbed
-      :created => self.created_at.iso8601,
-      :modified => self.updated_at.iso8601,
+      :created => created_at.iso8601,
+      :modified => updated_at.iso8601,
       :family => { },   # FIXME: stubbed
       :groups => [   # FIXME: stubbed
         "/Sequencing",
@@ -143,7 +143,7 @@ class Component < ActiveRecord::Base
       ],
       :related => [ ],   # FIXME: stubbed
       :ports => {
-        :inputs => self.input_ports.map { |p| p.to_hash },
+        :inputs => input_ports.map { |p| p.to_hash },
         :outputs => [    # FIXME: stubbed
           {
             :relative_id => "ports/outputs/rna_seq",
@@ -170,9 +170,9 @@ class Component < ActiveRecord::Base
         ]
       },
       :configuration => {
-        :fields => self.config_fields.map { |f| f.to_hash }
+        :fields => config_fields.map { |f| f.to_hash }
       },
-      :helpers => self.helpers.map { |h| h.to_hash }
+      :helpers => helpers.map { |h| h.to_hash }
     }
     
     return result
