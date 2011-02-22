@@ -98,7 +98,7 @@ class Component < ActiveRecord::Base
     end
   end
   
-  def to_hash
+  def to_hash(options=nil)
     result = { 
       :id => Wcl::Api.uri_for_object(self),
       :version => version,
@@ -178,8 +178,6 @@ class Component < ActiveRecord::Base
     return result
   end
   
-  def to_json
-    self.to_hash.to_json
-  end
+  alias :as_json :to_hash
   
 end

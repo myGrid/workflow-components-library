@@ -5,12 +5,17 @@ class ComponentsController < ApplicationController
   
   def index
     @components = @components.paginate :page => @page, :per_page => @per_page, :order => "updated_at DESC"
+    
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render :json => @components }
+    end
   end
 
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render :json => @component.to_json }
+      format.json { render :json => @component }
     end
   end
 
