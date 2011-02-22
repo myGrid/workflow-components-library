@@ -73,10 +73,20 @@ class Component < ActiveRecord::Base
   #   text :description
   # end
   
-  def self.latest(limit=10)
-    find(:all,
-         :order => "created_at DESC",
-         :limit => limit)
+  # Class methods
+  class << self
+    
+    def latest(limit=10)
+      find(:all,
+           :order => "created_at DESC",
+           :limit => limit)
+    end
+    
+    # TODO: implement this properly!
+    #def published
+    #  where(:published => true)
+    #end
+    
   end
   
   def published?
