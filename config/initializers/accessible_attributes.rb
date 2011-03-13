@@ -14,3 +14,5 @@ class ActiveRecord::Base
     end
   end
 end
+
+ ActiveRecord::Base.send(:attr_accessible, :session_id)
