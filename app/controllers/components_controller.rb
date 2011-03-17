@@ -1,11 +1,11 @@
 class ComponentsController < ApplicationController
   before_filter :authenticate_user!, :except => [ :index, :show ]
   
-  load_and_authorize_resource
+  load_and_authorize_resource :except => :index
+  
+  before_filter :find_components, :only => :index
   
   def index
-    @components = @components.paginate :page => @page, :per_page => @per_page, :order => "updated_at DESC"
-    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @components }
@@ -48,5 +48,21 @@ class ComponentsController < ApplicationController
     @component.destroy
     flash[:notice] = "Successfully destroyed component."
     redirect_to components_url
+  end
+  
+  private
+  
+  def find_components
+    Wcl::Util.say "\n\n*** search_query = #{@search_query}\n\n"
+    if @search_query
+      search_query = @search_query
+      search_response = Component.search do
+        keywords search_query
+        paginate :page => @page, :per_page => @per_page
+      end
+      @components = search_response.results
+    else
+      @components = @components.paginate :page => @page, :per_page => @per_page, :order => "updated_at DESC"
+    end
   end
 end

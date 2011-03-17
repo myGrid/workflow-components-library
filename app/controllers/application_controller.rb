@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_filter :set_page
   before_filter :set_per_page
   before_filter :set_limit
+  before_filter :set_search_query
 
   rescue_from CanCan::AccessDenied do |exception|
     flash[:error] = "Access Denied"
@@ -90,6 +91,10 @@ class ApplicationController < ActionController::Base
     else
       @limit = limit
     end
+  end
+  
+  def set_search_query
+    @search_query = params[:q]
   end
   
   # Generic method to raise / proceed from errors. 
