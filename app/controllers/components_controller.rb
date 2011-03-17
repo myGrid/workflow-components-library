@@ -62,7 +62,7 @@ class ComponentsController < ApplicationController
       end
       @components = search_response.results
     else
-      @components = @components.paginate :page => @page, :per_page => @per_page, :order => "updated_at DESC"
+      @components = Component.paginate :page => @page, :per_page => @per_page, :order => "updated_at DESC"
     end
   end
 end
