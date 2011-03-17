@@ -67,11 +67,11 @@ class Component < ActiveRecord::Base
            :through => :ports
   
   # Sunspot / Solr configuration
-  # searchable do
-  #   text :label, :default_boost => 2
-  #   text :title, :default_boost => 2
-  #   text :description
-  # end
+  searchable do
+    text :label, :default_boost => 2
+    text :title, :default_boost => 2
+    text :description
+  end
   
   # Class methods
   class << self
@@ -141,7 +141,7 @@ class Component < ActiveRecord::Base
         "/Convertors/DNA"
       ],
       :icons => {   # FIXME: stubbed
-        :main => "platform:/plugin/uk.org.taverna.t3.workbench.ui/icons/famfamfam_silk/database_go.png"
+        :main => "platform:/plugin/uk.org.taverna.t3.workbench.components.search.providers.wcl/icons/taverna-logo-16x16.png"
       },
       :docs => [ ],   # FIXME: stubbed
       :tags => [   # FIXME: stubbed
