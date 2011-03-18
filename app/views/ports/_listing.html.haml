@@ -14,5 +14,5 @@
     %strong Description:
     = port.description
   %p.buttons
-  = button "Edit", edit_port_path(@port), :size => :medium
-  = button "Delete", @port, :confirm => 'Are you sure?', :method => :delete, :size => :medium
+  = button "Edit", edit_port_path(port), :size => :medium
+  = button "Delete", port, :confirm => 'Are you sure?', :method => :delete, :size => :medium
